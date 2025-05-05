@@ -1,6 +1,11 @@
 [
   {
     "username": "JohnDoe",
+    "password": "password123",
+    "email": "JohnDoe@gmail.com",
+    "firstName": "John",
+    "lastName": "Doe",
+    "dateOfBirth": "1990-01-01",
     "posts": [
       {
         "text": "Had a great day at the park!",
@@ -27,6 +32,11 @@
   },
   {
     "username": "JaneSmith",
+    "password": "password123",
+    "email": "JohnDoe@gmail.com",
+    "firstName": "John",
+    "lastName": "Doe",
+    "dateOfBirth": "1990-01-01",
     "posts": [
       {
         "text": "Just finished a great workout!",
@@ -52,6 +62,11 @@
   },
   {
     "username": "MikeBrown",
+    "password": "password123",
+    "email": "JohnDoe@gmail.com",
+    "firstName": "John",
+    "lastName": "Doe",
+    "dateOfBirth": "1990-01-01",
     "posts": [
       {
         "text": "Exploring the mountains today!",
@@ -78,6 +93,11 @@
   },
   {
     "username": "AliceGreen",
+    "password": "password123",
+    "email": "JohnDoe@gmail.com",
+    "firstName": "John",
+    "lastName": "Doe",
+    "dateOfBirth": "1990-01-01",
     "posts": [
       {
         "text": "Enjoying a peaceful evening by the lake.",
@@ -103,6 +123,11 @@
   },
   {
     "username": "SarahWhite",
+    "password": "password123",
+    "email": "JohnDoe@gmail.com",
+    "firstName": "John",
+    "lastName": "Doe",
+    "dateOfBirth": "1990-01-01",
     "posts": [
       {
         "text": "Had a great time at the concert last night!",

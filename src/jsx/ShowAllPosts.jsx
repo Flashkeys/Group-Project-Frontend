@@ -1,6 +1,5 @@
 import React from "react";
-import '../css/ShowAllPosts.css';
-import Posts from '../json/container.json';
+import Posts from '../json/users.json';
 import '../css/Components.css';
 
 const ShowAllPosts = () => {
@@ -14,8 +13,6 @@ const ShowAllPosts = () => {
 
   return (
     <div>
-      <h1>Here is all posts</h1>
-      {/* Show all posts */}
       <div className="posts-container">
         {allPosts.map((post, index) => (
           <div key={index} className="post-card">
