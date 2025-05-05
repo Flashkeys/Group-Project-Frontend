@@ -1,0 +1,161 @@
+[
+  {
+    "username": "JohnDoe",
+    "posts": [
+      {
+        "text": "Had a great day at the park!",
+        "datePosted": "2025-05-04T14:30:00Z",
+        "picture": "https://example.com/images/park.jpg",
+        "likes": 120,
+        "likedBy": [
+          "JaneSmith",
+          "MikeBrown",
+          "AliceGreen"
+        ]
+      },
+      {
+        "text": "Loving this new book I'm reading.",
+        "datePosted": "2025-05-03T10:15:00Z",
+        "picture": "https://example.com/images/book.jpg",
+        "likes": 85,
+        "likedBy": [
+          "SarahWhite",
+          "TomBlack"
+        ]
+      }
+    ]
+  },
+  {
+    "username": "JaneSmith",
+    "posts": [
+      {
+        "text": "Just finished a great workout!",
+        "datePosted": "2025-05-04T08:00:00Z",
+        "picture": "https://example.com/images/workout.jpg",
+        "likes": 95,
+        "likedBy": [
+          "JohnDoe",
+          "AliceGreen"
+        ]
+      },
+      {
+        "text": "Can't wait for the weekend!",
+        "datePosted": "2025-05-02T18:45:00Z",
+        "picture": null,
+        "likes": 50,
+        "likedBy": [
+          "MikeBrown",
+          "TomBlack"
+        ]
+      }
+    ]
+  },
+  {
+    "username": "MikeBrown",
+    "posts": [
+      {
+        "text": "Exploring the mountains today!",
+        "datePosted": "2025-05-05T09:00:00Z",
+        "picture": "https://example.com/images/mountains.jpg",
+        "likes": 150,
+        "likedBy": [
+          "JohnDoe",
+          "JaneSmith",
+          "AliceGreen"
+        ]
+      },
+      {
+        "text": "Just tried a new recipe, it was amazing!",
+        "datePosted": "2025-05-03T16:20:00Z",
+        "picture": "https://example.com/images/recipe.jpg",
+        "likes": 90,
+        "likedBy": [
+          "SarahWhite",
+          "TomBlack"
+        ]
+      }
+    ]
+  },
+  {
+    "username": "AliceGreen",
+    "posts": [
+      {
+        "text": "Enjoying a peaceful evening by the lake.",
+        "datePosted": "2025-05-04T19:45:00Z",
+        "picture": "https://example.com/images/lake.jpg",
+        "likes": 110,
+        "likedBy": [
+          "JaneSmith",
+          "MikeBrown"
+        ]
+      },
+      {
+        "text": "Started a new painting today!",
+        "datePosted": "2025-05-02T14:10:00Z",
+        "picture": "https://example.com/images/painting.jpg",
+        "likes": 75,
+        "likedBy": [
+          "JohnDoe",
+          "SarahWhite"
+        ]
+      }
+    ]
+  },
+  {
+    "username": "SarahWhite",
+    "posts": [
+      {
+        "text": "Had a great time at the concert last night!",
+        "datePosted": "2025-05-04T23:30:00Z",
+        "picture": "https://example.com/images/concert.jpg",
+        "likes": 130,
+        "likedBy": [
+          "MikeBrown",
+          "AliceGreen",
+          "TomBlack"
+        ]
+      },
+      {
+        "text": "Had a great time at the concert last night!",
+        "datePosted": "2025-05-04T23:30:00Z",
+        "picture": "https://example.com/images/concert.jpg",
+        "likes": 130,
+        "likedBy": [
+          "MikeBrown",
+          "AliceGreen",
+          "TomBlack"
+        ]
+      },
+      {
+        "text": "Just finished a great workout!",
+        "datePosted": "2025-05-04T08:00:00Z",
+        "picture": "https://example.com/images/workout.jpg",
+        "likes": 95,
+        "likedBy": [
+          "JohnDoe",
+          "AliceGreen"
+        ]
+      },
+      {
+        "text": "Can't wait for the weekend!",
+        "datePosted": "2025-05-02T18:45:00Z",
+        "picture": null,
+        "likes": 50,
+        "likedBy": [
+          "MikeBrown",
+          "TomBlack"
+        ]
+      },
+      {
+        "text": "Morning coffee is the best way to start the day.",
+        "datePosted": "2025-05-03T07:15:00Z",
+        "picture": "https://example.com/images/coffee.jpg",
+        "likes": 60,
+        "likedBy": [
+          "JohnDoe",
+          "JaneSmith"
+        ]
+      }
+    ]
+  }
+]
