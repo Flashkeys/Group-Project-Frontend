@@ -13,8 +13,6 @@ const ShowAllPosts = () => {
 
   return (
     <div>
-      <h1>Here is all posts</h1>
-      {/* Show all posts */}
       <div className="posts-container">
         {allPosts.map((post, index) => (
           <div key={index} className="post-card">
