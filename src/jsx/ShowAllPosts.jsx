@@ -1,10 +1,7 @@
 import React from "react";
-<<<<<<< HEAD
 import '../css/ShowAllPosts.css';
 import Posts from '../json/container.json';
-=======
 import '../css/Components.css';
->>>>>>> cb11898701007edd42a840a1e5bed88632ef66a4
 
 const ShowAllPosts = () => {
 
