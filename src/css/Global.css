@@ -1,33 +1,47 @@
 /* Global or base styles */
+
+/* Reset & Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #1c1c1c;
-    color: #ffffff;
-    text-align: left;
-    padding: 20px;
-  }
-/* Fonts */
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1c1c1c;
+  color: #ffffff;
+  text-align: left;
+  line-height: 1.6;
+}
+
+/* Typography */
 
 h1 {
-    font-size: 2.5em;
+  font-size: 2.8rem;
+  text-align: center;
 }
 
 h2 {
-    font-size: 2em;
+  font-size: 2.2rem;
 }
 
 p {
-    font-size: 1.2em;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
 }
 
 /* Links */
-  a {
-    color: #44e0ff;
-    text-decoration: none;
-    font-size: 1em;
-  }
-    a:hover {
-        text-decoration: underline;
-        color: #ffffff;
-    }
+a {
+  color: #44e0ff;
+  text-decoration: none;
+  padding: 20px;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
