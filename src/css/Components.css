@@ -1,4 +1,6 @@
-/* Posts ShowAllPostPost.jsx */
+/* This CSS file is for styling the components in the ShowAllPostPost.jsx file */
+
+/* Posts Container */
 .posts-container {
     display: flex;
     justify-content: center;
@@ -21,6 +23,7 @@
     margin-bottom: 20px; /* Space between cards if multiple */
 }
 
+/* Footer */
 .footer {
     padding: 20px;
     background-color: #000000;
