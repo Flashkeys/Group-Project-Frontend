@@ -1,6 +1,6 @@
 import React from "react";
 import '../css/ShowAllPosts.css';
-import Posts from '../json/container.json';
+import Posts from '../json/users.json';
 import '../css/Components.css';
 
 const ShowAllPosts = () => {
