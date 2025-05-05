@@ -1,5 +1,36 @@
 [
   {
+    "username": "test",
+    "password": "test",
+    "email": "test@gmail.com",
+    "firstName": "test",
+    "lastName": "123",
+    "dateOfBirth": "1990-01-01",
+    "posts": [
+      {
+        "text": "testing text!",
+        "datePosted": "2025-05-05T14:16:00Z",
+        "picture": "https://example.com/images/park.jpg",
+        "likes": 120,
+        "likedBy": [
+          "JaneSmith",
+          "MikeBrown",
+          "AliceGreen"
+        ]
+      },
+      {
+        "text": "Loving this new book I'm reading.",
+        "datePosted": "2025-05-03T10:15:00Z",
+        "picture": "https://example.com/images/book.jpg",
+        "likes": 85,
+        "likedBy": [
+          "SarahWhite",
+          "TomBlack"
+        ]
+      }
+    ]
+  },
+  {
     "username": "JohnDoe",
     "password": "password123",
     "email": "JohnDoe@gmail.com",

@@ -11,6 +11,8 @@ import Register from './jsx/Register.jsx';
 import Logout from './jsx/Logout.jsx';
 
 const Index = () => {
+  const currentUser = localStorage.getItem("currentUser");
+  console.log("Logged in as:", currentUser);
 
   return (
     <BrowserRouter>
