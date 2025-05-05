@@ -6,7 +6,7 @@ const Header = () => {
   const userProfileImage = "https://via.placeholder.com/40"; // Replace with user's actual profile image URL
 
   return (
-    <div>
+    <div className="header">
       <ul>
         <li><a href="/">Home</a></li>
         {isLoggedIn ? (
