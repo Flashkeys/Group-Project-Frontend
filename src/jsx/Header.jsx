@@ -16,15 +16,15 @@ const Header = () => {
                 <img src={userProfileImage} alt="Profile" />
               </a>
             </li>
-            <li><link href="/liked">Liked Posts</link></li>
-            <li><link href="/messages">Messages</link></li>
-            <li><link href="/edit">Edit Profile</link></li>
-            <li><link href="/logout">Logout</link></li>
+            <li><a href="/liked">Liked Posts</a></li>
+            <li><a href="/messages">Messages</a></li>
+            <li><a href="/edit">Edit Profile</a></li>
+            <li><a href="/logout">Logout</a></li>
           </>
         ) : (
           <>
-            <li><link href="/login">Login</link></li>
-            <li><link href="/register">Register</link></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
           </>
         )}
       </ul>
