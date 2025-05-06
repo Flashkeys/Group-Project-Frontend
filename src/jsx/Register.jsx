@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import '../css/Global.css';
 import Users from '../json/users.json';
+import { useNavigate } from "react-router";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -72,6 +74,7 @@ const Register = () => {
       lastName: "",
       dateOfBirth: ""
     });
+    navigate("/login");
   };
 
   return (
