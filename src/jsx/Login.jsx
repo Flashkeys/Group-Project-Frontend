@@ -27,7 +27,7 @@ const Login = () => {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   return (
-    <div>
+    <div className="login-container">
       <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <label htmlFor="username">Username:</label><br />
