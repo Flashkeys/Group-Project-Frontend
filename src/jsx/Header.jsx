@@ -15,7 +15,7 @@ const Header = () => {
           <>
             <li>
               <a href="/profile">
-                <img src={userProfileImage} alt="Profile" className="profile-pic"/>
+                <img src={userProfileImage} alt="Profile" className="profile-pic" />
               </a>
             </li>
             <li><a href="/liked">Liked Posts</a></li>
@@ -24,7 +24,7 @@ const Header = () => {
                 <img src={messageIcon} alt="Messages" className="message-icon" />
               </a>
             </li>
-            <li><a href="/logout">Logout</a></li>
+            <li><button onClick={() => { localStorage.removeItem("currentUser"); window.location.reload(); }}>Logout</button></li>
             {user && <li>Logged in as: {user.username}</li>}
           </>
         ) : (

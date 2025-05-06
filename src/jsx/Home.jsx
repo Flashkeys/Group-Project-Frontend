@@ -9,6 +9,7 @@ import Users from '../json/users.json';
 const Home = () => {
 
   //localStorage.removeItem("users");
+  //localStorage.removeItem("currentUser");
 
   // Check if users.json is already in localStorage otherwise set it
   if (!localStorage.getItem("users")) {
