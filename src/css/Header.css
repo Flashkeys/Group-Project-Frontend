@@ -1,0 +1,50 @@
+/* Style for the header container */
+.header {
+  background-color: #333; /* Dark background color */
+  color: white; /* White text color */
+  padding: 30px;
+}
+
+/* Style for the unordered list in the header */
+.header ul {
+  list-style: none; /* Remove bullet points */
+  margin: 0; /* Remove default margins */
+  padding: 0; /* Remove default padding */
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-around; /* Distribute items evenly */
+  align-items: center; /* Vertically align items */
+}
+
+/* Style for the list items in the header */
+.header li {
+  margin: 0 10px; /* Add horizontal margin between items */
+}
+
+/* Style for the links in the header */
+.header a {
+  color: white; /* White text color */
+  text-decoration: none; /* Remove underlines */
+  padding: 20px 10px; /* Add padding around the text */
+  border-radius: 5px; /* Add rounded corners */
+}
+
+/* Style for the links on hover */
+.header a:hover {
+  background-color: #555; /* Darker background on hover */
+}
+
+/* Style for the profile image in the header */
+.profile-pic {
+  width: 30px; /* Set image width */
+  height: 30px; /* Set image height */
+  border-radius: 50%; /* Make image circular */
+  vertical-align: middle; /* Vertically align with text */
+  margin-right: 5px; /* Add spacing to the right of the image */
+}
+
+/* Style for the message icon */
+.message-icon {
+  width:40px;
+  height: 40px;
+  vertical-align: middle;
+}
