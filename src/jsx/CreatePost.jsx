@@ -66,6 +66,8 @@ const CreatePost = () => {
       datePosted: "",
       picture: "",
     });
+    // Reload the page to show the new posts
+    window.location.reload();
   };
 
   return (
