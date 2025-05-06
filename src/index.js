@@ -8,6 +8,7 @@ import LikedPosts from './jsx/LikedPosts.jsx';
 import EditProfile from './jsx/EditProfile.jsx';
 import Login from './jsx/Login.jsx';
 import Register from './jsx/Register.jsx';
+import CreatePost from './jsx/CreatePost.jsx';
 
 const Index = () => {
   const currentUser = localStorage.getItem("currentUser");
@@ -23,6 +24,7 @@ const Index = () => {
         <Route path="/edit" element={<EditProfile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/createPost" element={<CreatePost />} />
       </Routes>
     </BrowserRouter>
   )
