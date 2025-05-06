@@ -84,7 +84,7 @@
   
   /* Logout button */
   .login-container button {
-    background-color: #ff4d4d;
+    background-color: #1ab4cc;
     color: white;
     border: none;
     padding: 10px;
@@ -94,6 +94,6 @@
   }
   
   .login-container button:hover {
-    background-color: #e63946;
+    background-color: #168ea0;
   }
   
