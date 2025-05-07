@@ -9,11 +9,41 @@ const ShowAllPosts = () => {
   }
 
   const existingUsers = JSON.parse(localStorage.getItem("users"));
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   // Flatten all posts into a single array and sort by date
-  const allPosts = existingUsers.flatMap(user =>
-    user.posts.map(post => ({ ...post, username: user.username }))
+  const allPosts = existingUsers.flatMap((user, userIndex) =>
+    user.posts.map((post, postIndex) => ({
+      ...post,
+      username: user.username,
+      userIndex,
+      postIndex,
+    }))
   ).sort((a, b) => new Date(b.datePosted) - new Date(a.datePosted));
+
+  const handleLike = (userIndex, postIndex) => {
+    if (!currentUser || !currentUser.isLoggedIn) {
+      alert("You must be logged in to like a post.");
+      return;
+    }
+
+    // Update the post in the users array
+    const updatedUsers = [...existingUsers];
+    const post = updatedUsers[userIndex].posts[postIndex];
+
+    // Check if the current user has already liked the post
+    if (!post.likedBy.includes(currentUser.username)) {
+      post.likes += 1;
+      post.likedBy.push(currentUser.username);
+    } else {
+      alert("You have already liked this post.");
+      return;
+    }
+
+    // Save the updated users array back to localStorage
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    window.location.reload(); // Reload to reflect the changes
+  };
 
   return (
     <div>
@@ -31,6 +61,7 @@ const ShowAllPosts = () => {
               </p>
               <p>Date: {new Date(post.datePosted).toLocaleString()}</p>
               {post.picture && <img src={post.picture} alt="Post" className="post-picture" />}
+              <button onClick={() => handleLike(post.userIndex, post.postIndex)}>Like</button>
               <p>Likes: {post.likes}</p>
               <p>
                 Liked by:{" "}
