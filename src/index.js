@@ -9,6 +9,7 @@ import EditProfile from './jsx/EditProfile.jsx';
 import Login from './jsx/Login.jsx';
 import Register from './jsx/Register.jsx';
 import NotFound from './jsx/NotFound.jsx';
+import OtherProfiles from './jsx/OtherProfiles.jsx';
 
 const Index = () => {
   const currentUser = localStorage.getItem("currentUser");
@@ -24,6 +25,7 @@ const Index = () => {
         <Route path="/edit" element={<EditProfile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/profile/:username" element={<OtherProfiles />} />
         <Route path="/*" element={<NotFound/>} />
       </Routes>
     </BrowserRouter>

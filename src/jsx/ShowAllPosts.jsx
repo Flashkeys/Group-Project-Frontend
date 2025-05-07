@@ -1,5 +1,6 @@
 import React from "react";
 import '../css/Components.css';
+import { Link } from "react-router";
 
 const ShowAllPosts = () => {
   // Check if users exist in localStorage, otherwise initialize it
@@ -22,11 +23,30 @@ const ShowAllPosts = () => {
           allPosts.map((post, index) => (
             <div key={index} className="post-card">
               <h2>{post.text}</h2>
-              <p>Posted by: {post.username}</p>
+              <p>
+                Posted by:{" "}
+                <Link to={`/profile/${post.username}`} className="username-link">
+                  {post.username}
+                </Link>
+              </p>
               <p>Date: {new Date(post.datePosted).toLocaleString()}</p>
               {post.picture && <img src={post.picture} alt="Post" className="post-picture" />}
               <p>Likes: {post.likes}</p>
-              <p>Liked by: {post.likedBy.join(", ") || "No likes yet"}</p>
+              <p>
+                Liked by:{" "}
+                {post.likedBy.length > 0 ? (
+                  post.likedBy.map((liker, likerIndex) => (
+                    <span key={likerIndex}>
+                      <Link to={`/profile/${liker}`} className="username-link">
+                        {liker}
+                      </Link>
+                      {likerIndex < post.likedBy.length - 1 && ", "}
+                    </span>
+                  ))
+                ) : (
+                  "No likes yet"
+                )}
+              </p>
             </div>
           ))
         ) : (
