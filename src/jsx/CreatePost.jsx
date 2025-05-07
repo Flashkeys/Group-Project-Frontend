@@ -72,6 +72,7 @@ const CreatePost = () => {
 
   return (
     <div className="create-post-container">
+    <div className="create-post-inner">
       <form onSubmit={handleSubmit}>
         <label>Text:</label><br />
         <textarea name="text" value={formData.text} onChange={handleChange} placeholder="Enter text here" required />
@@ -83,7 +84,7 @@ const CreatePost = () => {
       </form>
       {error && <p className="error">{error}</p>}
       {success && <p className="success">{success}</p>}
-    </div>
+    </div></div>
   );
 };
 

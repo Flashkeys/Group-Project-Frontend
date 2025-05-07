@@ -41,12 +41,14 @@ const Profile = () => {
     <div>
       <Header /> {/* Include the Header component */}
       <div className="profile-container">
+      <div className="profile-inner">
       <h1>Profile</h1>
       <p>Username: {userProfile.username}</p>
       <p>Email: {userProfile.email}</p>
       <p>First Name: {userProfile.firstName}</p>
       <p>Last Name: {userProfile.lastName}</p>
       <p>Date of Birth: {userProfile.dateOfBirth}</p>
+      </div>
       </div>
 
       <div className="posts-container">

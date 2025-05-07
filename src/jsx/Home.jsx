@@ -20,7 +20,7 @@ const Home = () => {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   return (
-    <div>
+    <div className="home-container">
       <Header />
       {currentUser && currentUser.isLoggedIn ? (
         <div>
