@@ -10,6 +10,10 @@ import Login from './jsx/Login.jsx';
 import Register from './jsx/Register.jsx';
 import NotFound from './jsx/NotFound.jsx';
 import OtherProfiles from './jsx/OtherProfiles.jsx';
+import Users from './json/users.json'; // Import the users data
+
+// Save the users data to local storage
+localStorage.setItem("users", JSON.stringify(Users));
 
 const Index = () => {
   const currentUser = localStorage.getItem("currentUser");
