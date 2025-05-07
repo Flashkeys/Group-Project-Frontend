@@ -13,6 +13,7 @@
   display: flex; /* Use flexbox for layout */
   justify-content: space-around; /* Distribute items evenly */
   align-items: center; /* Vertically align items */
+  
 }
 
 /* Style for the list items in the header */
@@ -48,37 +49,4 @@
   width: 30px;
   height: 30px;
   vertical-align: middle;
-}
-
-/* Mobile dropdown style */
-@media (max-width: 500px) {
-  .header ul {
-    flex-direction: column;       /* Stack items vertically */
-    align-items: flex-start;      /* Align to left */
-    background-color: #0c0c0c;    /* Consistent background */
-    width: 100%;
-    padding: 0px;
-  }
-
-  .header li {
-    width: 100%;
-    margin: 10px 0;
-  }
-
-  .header a {
-    display: block;
-    width: 100%;
-    padding: 12px 10px;
-    border-radius: 4px;
-  }
-
-  .header a:hover {
-    background-color: #222;
-  }
-
-  .header button {
-    width: 100%;
-    text-align: left;
-    padding: 12px 10px;
-  }
 }
