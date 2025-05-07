@@ -74,7 +74,7 @@ const CreatePost = () => {
     <div className="create-post-container">
       <form onSubmit={handleSubmit}>
         <label>Text:</label><br />
-        <textarea name="text" value={formData.text} onChange={handleChange} required />
+        <textarea name="text" value={formData.text} onChange={handleChange} placeholder="Enter text here" required />
         <br />
         <label>Picture (optional):</label><br />
         <input type="text" name="picture" value={formData.picture} onChange={handleChange} placeholder="Enter picture URL" />

@@ -41,60 +41,11 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   }
   
-  /* Form inputs */
-  .login-container input[type="text"],
-  .login-container input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0 20px 0;
-    background-color: #3a3a3a;
-    border: 1px solid #555;
-    color: #fff;
-    border-radius: 6px;
-  }
-  
-  .login-container input[type="text"]::placeholder,
-  .login-container input[type="password"]::placeholder {
-    color: #bbb;
-  }
-  
-  /* Submit button */
-  .login-container input[type="submit"] {
-    width: 100%;
-    padding: 12px;
-    background-color: #44e0ff;
-    border: none;
-    color: #000;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .login-container input[type="submit"]:hover {
-    background-color: #1ab4cc;
-  }
-  
   /* Error message */
   .login-container .error {
     color: #ff6b6b;
     text-align: center;
     margin-top: 10px;
-  }
-  
-  /* Logout button */
-  .login-container button {
-    background-color: #1ab4cc;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 6px;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-  
-  .login-container button:hover {
-    background-color: #168ea0;
   }
   
 /* post container */
@@ -104,14 +55,3 @@
   padding: 20px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
-
-  /* new post button */
-  .create-post-container button {
-    background-color: #1ab4cc;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 6px;
-    margin-top: 10px;
-    cursor: pointer;
-  }
