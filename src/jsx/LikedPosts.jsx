@@ -15,7 +15,7 @@ const LikedPosts = () => {
             // Find the liked posts for the logged-in user
             const liked = Users.flatMap(user =>
                 user.posts.filter(post => post.likedBy.includes(loggedInUser.username))
-                    .map(post => ({ ...post, username: user.username }))
+                    .map(post => ({ ...post, username: user.username, picture: post.picture }))
             ).sort((a, b) => new Date(b.datePosted) - new Date(a.datePosted));
             setLikedPosts(liked);
         }
@@ -41,7 +41,7 @@ const LikedPosts = () => {
                         <h2>{post.text}</h2>
                         <p>Posted by: {post.username}</p>
                         <p>{post.datePosted}</p>
-                        <p>{post.picture}</p>
+                        {post.picture && <img src={post.picture} alt="Post" />}
                         <p>Likes {post.likes}</p>
                         <p>Liked by {post.likedBy.join(", ")}</p>
                     </div>
