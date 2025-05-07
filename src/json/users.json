@@ -10,22 +10,24 @@
       {
         "text": "testing text!",
         "datePosted": "2025-05-05T14:16:00Z",
-        "picture": "https://example.com/images/park.jpg",
+        "picture": "https://image.newyork.se/wp-content/uploads/2013/02/Central-Park.jpg",
         "likes": 120,
         "likedBy": [
           "JaneSmith",
           "MikeBrown",
-          "AliceGreen"
+          "AliceGreen",
+          "test"
         ]
       },
       {
         "text": "Loving this new book I'm reading.",
         "datePosted": "2025-05-03T10:15:00Z",
-        "picture": "https://example.com/images/book.jpg",
+        "picture": "https://images.pexels.com/photos/2099266/pexels-photo-2099266.jpeg?auto=compress&cs=tinysrgb&w=600",
         "likes": 85,
         "likedBy": [
           "SarahWhite",
-          "TomBlack"
+          "TomBlack",
+          "test"
         ]
       }
     ]
@@ -41,18 +43,19 @@
       {
         "text": "Had a great day at the park!",
         "datePosted": "2025-05-04T14:30:00Z",
-        "picture": "https://example.com/images/park.jpg",
+        "picture": "https://images.pexels.com/photos/158028/bellingrath-gardens-alabama-landscape-scenic-158028.jpeg?auto=compress&cs=tinysrgb&w=600",
         "likes": 120,
         "likedBy": [
           "JaneSmith",
           "MikeBrown",
-          "AliceGreen"
+          "AliceGreen",
+          "test"
         ]
       },
       {
         "text": "Loving this new book I'm reading.",
         "datePosted": "2025-05-03T10:15:00Z",
-        "picture": "https://example.com/images/book.jpg",
+        "picture": "https://images.pexels.com/photos/325521/pexels-photo-325521.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "likes": 85,
         "likedBy": [
           "SarahWhite",
@@ -72,11 +75,12 @@
       {
         "text": "Just finished a great workout!",
         "datePosted": "2025-05-04T08:00:00Z",
-        "picture": "https://example.com/images/workout.jpg",
+        "picture": "https://images.pexels.com/photos/669578/pexels-photo-669578.jpeg?auto=compress&cs=tinysrgb&w=600",
         "likes": 95,
         "likedBy": [
           "JohnDoe",
-          "AliceGreen"
+          "AliceGreen",
+          "test"
         ]
       },
       {
@@ -102,7 +106,7 @@
       {
         "text": "Exploring the mountains today!",
         "datePosted": "2025-05-05T09:00:00Z",
-        "picture": "https://example.com/images/mountains.jpg",
+        "picture": "https://images.pexels.com/photos/808465/pexels-photo-808465.jpeg?auto=compress&cs=tinysrgb&w=600",
         "likes": 150,
         "likedBy": [
           "JohnDoe",
@@ -113,7 +117,7 @@
       {
         "text": "Just tried a new recipe, it was amazing!",
         "datePosted": "2025-05-03T16:20:00Z",
-        "picture": "https://example.com/images/recipe.jpg",
+        "picture": "https://images.pexels.com/photos/302544/pexels-photo-302544.jpeg?auto=compress&cs=tinysrgb&w=600",
         "likes": 90,
         "likedBy": [
           "SarahWhite",
@@ -133,7 +137,7 @@
       {
         "text": "Enjoying a peaceful evening by the lake.",
         "datePosted": "2025-05-04T19:45:00Z",
-        "picture": "https://example.com/images/lake.jpg",
+        "picture": "https://images.pexels.com/photos/29267443/pexels-photo-29267443/free-photo-of-naturskon-solnedgang-over-ludvikasjons-reflektion.jpeg?auto=compress&cs=tinysrgb&w=600",
         "likes": 110,
         "likedBy": [
           "JaneSmith",
@@ -143,7 +147,7 @@
       {
         "text": "Started a new painting today!",
         "datePosted": "2025-05-02T14:10:00Z",
-        "picture": "https://example.com/images/painting.jpg",
+        "picture": "https://images.pexels.com/photos/542555/pexels-photo-542555.jpeg?auto=compress&cs=tinysrgb&w=600",
         "likes": 75,
         "likedBy": [
           "JohnDoe",
@@ -163,7 +167,7 @@
       {
         "text": "Had a great time at the concert last night!",
         "datePosted": "2025-05-04T23:30:00Z",
-        "picture": "https://example.com/images/concert.jpg",
+        "picture": "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=600",
         "likes": 130,
         "likedBy": [
           "MikeBrown",
@@ -174,7 +178,7 @@
       {
         "text": "Had a great time at the concert last night!",
         "datePosted": "2025-05-04T23:30:00Z",
-        "picture": "https://example.com/images/concert.jpg",
+        "picture": "https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg?auto=compress&cs=tinysrgb&w=600",
         "likes": 130,
         "likedBy": [
           "MikeBrown",
@@ -185,7 +189,7 @@
       {
         "text": "Just finished a great workout!",
         "datePosted": "2025-05-04T08:00:00Z",
-        "picture": "https://example.com/images/workout.jpg",
+        "picture": "https://images.pexels.com/photos/1271428/pexels-photo-1271428.jpeg?auto=compress&cs=tinysrgb&w=600",
         "likes": 95,
         "likedBy": [
           "JohnDoe",
@@ -205,7 +209,7 @@
       {
         "text": "Morning coffee is the best way to start the day.",
         "datePosted": "2025-05-03T07:15:00Z",
-        "picture": "https://example.com/images/coffee.jpg",
+        "picture": "https://images.pexels.com/photos/1684151/pexels-photo-1684151.jpeg?auto=compress&cs=tinysrgb&w=600",
         "likes": 60,
         "likedBy": [
           "JohnDoe",
