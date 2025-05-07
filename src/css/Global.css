@@ -43,13 +43,14 @@ a {
 
 a:hover {
   text-decoration: underline;
-  color: #ffffff;
+  color: #a0a0a0;
 }
 
 /* Inputs (text, email, password, etc.) */
 input[type="text"],
 input[type="email"],
 input[type="password"],
+input[type="date"],
 textarea {
   width: 100%;
   padding: 12px 16px;
@@ -66,6 +67,7 @@ textarea {
 input[type="text"]::placeholder,
 input[type="email"]::placeholder,
 input[type="password"]::placeholder,
+input[type="date"],
 textarea::placeholder {
   color: #ffffff;
 }
@@ -74,6 +76,7 @@ textarea::placeholder {
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
+input[type="date"],
 textarea:focus {
   outline: none;
   border-color: #44e0ff;
@@ -122,3 +125,4 @@ textarea:focus {
   background-color: #666666;
   outline: none;
 }
+
