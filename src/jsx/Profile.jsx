@@ -38,17 +38,19 @@ const Profile = () => {
   }
 
   return (
-    <div className="profile-container">
+    <div>
       <Header /> {/* Include the Header component */}
+      <div className="profile-container">
       <h1>Profile</h1>
       <p>Username: {userProfile.username}</p>
       <p>Email: {userProfile.email}</p>
       <p>First Name: {userProfile.firstName}</p>
       <p>Last Name: {userProfile.lastName}</p>
       <p>Date of Birth: {userProfile.dateOfBirth}</p>
+      </div>
 
-      <h2>My Posts</h2>
       <div className="posts-container">
+      <h2>My Posts</h2>
         {userProfile.posts && userProfile.posts.length > 0 ? (
           userProfile.posts.map((post, index) => (
             <div key={index} className="post-card">

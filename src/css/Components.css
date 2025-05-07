@@ -7,7 +7,7 @@
     align-items: center;
     flex-direction: column; /* Stack post cards vertically */
     min-height: 100vh; /* Full viewport height */
-    color: black;
+    color: rgb(255, 255, 255);
     background-color: #1c1c1c; /* Optional: for contrast */
     padding: 20px;
 }
@@ -79,3 +79,23 @@
   transition: transform 0.2s;
   text-align: left;
 }
+
+/* profile container */
+.profile-container {
+  background-color: #0c0c0c;
+  padding: 20px;
+}
+.profile-container h1 {
+  color: #ffffff;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.profile-container h2 {
+  color: #ffffff;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
