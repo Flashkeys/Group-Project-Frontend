@@ -71,7 +71,7 @@ const CreatePost = () => {
   };
 
   return (
-    <div>
+    <div className="create-post-container">
       <form onSubmit={handleSubmit}>
         <label>Text:</label><br />
         <textarea name="text" value={formData.text} onChange={handleChange} required />

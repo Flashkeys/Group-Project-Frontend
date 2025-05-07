@@ -97,3 +97,21 @@
     background-color: #168ea0;
   }
   
+/* post container */
+.create-post-container {
+  width: 100%;
+  background-color: #2a2a2a;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+  /* new post button */
+  .create-post-container button {
+    background-color: #1ab4cc;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
