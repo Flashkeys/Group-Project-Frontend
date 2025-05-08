@@ -76,7 +76,12 @@ const Header = () => {
                 <img src={messageIcon} alt="Messages" className="message-icon" />
               </a>
             </li>
-            <li><button onClick={() => { localStorage.removeItem("currentUser"); window.location.reload(); }}>Logout</button></li>
+            <li>
+              <button onClick={() => { 
+                localStorage.removeItem("currentUser"); 
+                navigate("/login"); // Redirect to login page after logout
+              }}>Logout</button>
+            </li>
             {user && <li>Logged in as: {user.username}</li>}
           </>
         ) : (
