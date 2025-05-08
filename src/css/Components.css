@@ -14,6 +14,8 @@
   width: 100%;
   font-size: 2.5rem;
   color: #44e0ff;
+  display: flex;
+  justify-content: space-between;
 }
 
 .post-header-buttons {
