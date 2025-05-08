@@ -1,52 +1,72 @@
 /* Style for the header container */
 .header {
-  background-color: #0c0c0c; /* Dark background color */
-  color: white; /* White text color */
+  background-color: #0c0c0c;
+  color: white;
   padding: 20px;
 }
 
 /* Style for the unordered list in the header */
 .header ul {
-  list-style: none; /* Remove bullet points */
-  margin: 0; /* Remove default margins */
-  padding: 0; /* Remove default padding */
-  display: flex; /* Use flexbox for layout */
-  justify-content: space-around; /* Distribute items evenly */
-  align-items: center; /* Vertically align items */
-  
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap; /* Allows items to wrap on small screens */
 }
 
 /* Style for the list items in the header */
 .header li {
-  margin: 0 10px; /* Add horizontal margin between items */
+  margin: 0 10px;
 }
 
 /* Style for the links in the header */
 .header a {
-  color: white; /* White text color */
-  text-decoration: none; /* Remove underlines */
-  padding: 20px 10px; /* Add padding around the text */
-  border-radius: 5px; /* Add rounded corners */
+  color: white;
+  text-decoration: none;
+  padding: 20px 10px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
 }
 
-/* Style for the links on hover */
+/* Hover effect */
 .header a:hover {
   color: #ffffff;
-  background-color: #2c2c2c; /* Darker background on hover */
+  background-color: #2c2c2c;
 }
 
-/* Style for the profile image in the header */
+/* Profile image */
 .profile-pic {
-  width: 30px; /* Set image width */
-  height: 30px; /* Set image height */
-  border-radius: 50%; /* Make image circular */
-  vertical-align: middle; /* Vertically align with text */
-  margin-right: 5px; /* Add spacing to the right of the image */
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 5px;
 }
 
-/* Style for the message icon */
+/* Message icon */
 .message-icon {
   width: 30px;
   height: 30px;
   vertical-align: middle;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .header ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header li {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .header a {
+    width: 100%;
+    padding: 15px;
+  }
 }

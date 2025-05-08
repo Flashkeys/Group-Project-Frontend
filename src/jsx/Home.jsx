@@ -1,5 +1,4 @@
 import React from "react";
-import '../css/Home.css';
 import '../css/Global.css';
 import Header from '../jsx/Header.jsx';
 import Footer from "../jsx/Footer.jsx";
@@ -24,7 +23,7 @@ const Home = () => {
       <Header />
       {currentUser && currentUser.isLoggedIn ? (
         <div>
-          <p>Logged in as: {currentUser.username}</p>
+     {/*     <p>Logged in as: {currentUser.username}</p> */}
           <CreatePost />
         </div>
       ) : (
