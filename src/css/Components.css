@@ -23,6 +23,43 @@
   color: #44e0ff;
 }
 
+.post-header-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  gap: 10px;
+}
+
+.post-header-button {
+  width: 35px;
+  height: 35px;
+  background-color: #44e0ff;
+  padding: 3px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.post-header-button-save {
+  width: 35px;
+  height: 35px;
+  background-color: greenyellow;
+  padding: 3px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.post-header-button-delete {
+  width: 35px;
+  height: 35px;
+  background-color: red;
+  padding: 3px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
 .post-date {
   font-size: 0.8rem;
   color: #a0a0a0;
@@ -72,18 +109,7 @@
   margin-bottom: 20px;
 }
 
-/*
 .post-like-button {
-  width: 100px;
-  height: 100px;
-  background-color: #44e0ff;
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-*/
-.post-like-button{
   width: 35px;
   height: 35px;
   padding: 3px;
@@ -176,7 +202,8 @@
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-  margin: 20px auto; /* center horizontally */
+  margin: 20px auto;
+  /* center horizontally */
   display: block;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
@@ -198,26 +225,33 @@
 /* Main content layout: flex to place sidebar and content side by side */
 .main-content {
   display: flex;
-  flex: 2; /* Takes up the remaining space after the header */
+  flex: 2;
+  /* Takes up the remaining space after the header */
   padding: 0px;
 }
 
 /* Sidebar styling */
 .sidebar {
-  width: 300px; /* Adjust sidebar width */
+  width: 300px;
+  /* Adjust sidebar width */
   background-color: #1c1c1c;
   padding: 20px;
-  height: auto; /* Let the sidebar grow with content */
+  height: auto;
+  /* Let the sidebar grow with content */
   box-sizing: border-box;
-  margin-right: 20px; /* Space between sidebar and posts */
+  margin-right: 20px;
+  /* Space between sidebar and posts */
 }
 
 /* Post content Home page */
 .post-content {
-  flex: 1; /* Take remaining space */
+  flex: 1;
+  /* Take remaining space */
   display: flex;
-  flex-direction: column; /* Stack items vertically */
-  justify-content: flex-start; /* Align items to the top */
+  flex-direction: column;
+  /* Stack items vertically */
+  justify-content: flex-start;
+  /* Align items to the top */
   background-color: #1c1c1c;
   color: rgb(255, 255, 255);
   padding: 20px;
