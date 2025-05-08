@@ -50,7 +50,7 @@
   /* Space between cards if multiple */
 }
 
-.post-content img {
+.post-picture {
   width: 800px;
   height: 500px;
   border-radius: 8px;
@@ -83,7 +83,7 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 */
-.post-like-button {
+.post-like-button{
   width: 35px;
   height: 35px;
   padding: 3px;
