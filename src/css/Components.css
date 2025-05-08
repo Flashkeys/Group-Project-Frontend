@@ -29,13 +29,17 @@
 
 .post-picture {
   width: 100%;
+  max-width: 700px;
   height: auto;
   border-radius: 8px;
   margin: 20px 0;
+  margin-left: auto;
+  margin-right: auto;
   display: block;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .post-card img:hover {
   transform: scale(1.02);
