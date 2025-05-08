@@ -33,13 +33,13 @@ const ShowAllPosts = () => {
     const updatedUsers = [...existingUsers];
     const post = updatedUsers[userIndex].posts[postIndex];
 
-    // Check if the current user has already liked the post
+    // Toggle like: Add or remove the current user's like
     if (!post.likedBy.includes(currentUser.username)) {
       post.likes += 1;
       post.likedBy.push(currentUser.username);
     } else {
-      alert("You have already liked this post.");
-      return;
+      post.likes -= 1;
+      post.likedBy = post.likedBy.filter(username => username !== currentUser.username);
     }
 
     // Save the updated users array back to localStorage
@@ -72,7 +72,12 @@ const ShowAllPosts = () => {
                 {post.picture && <img src={post.picture} alt="Post" className="post-picture" />}
               </div>
               <div className="post-likes">
-                <img src={likeIcon} className="post-like-button" onClick={() => handleLike(post.userIndex, post.postIndex)} />
+                <img
+                  src={post.likedBy.includes(currentUser?.username) ? likeIconFull : likeIcon}
+                  className="post-like-button"
+                  onClick={() => handleLike(post.userIndex, post.postIndex)}
+                  alt="Like Button"
+                />
                 <p>{post.likes}</p>
               </div>
               <p>
