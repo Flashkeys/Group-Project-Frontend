@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router";
+import Header from "./Header";
 
 const OtherProfiles = () => {
   // Get the username from the URL parameters
@@ -15,6 +16,7 @@ const OtherProfiles = () => {
 
   return (
     <div>
+      <Header />
       <h1>Profile of {user.username}</h1>
       <p>First Name: {user.firstName}</p>
       <p>Last Name: {user.lastName}</p>
