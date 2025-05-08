@@ -72,12 +72,7 @@ const ShowAllPosts = () => {
                 {post.picture && <img src={post.picture} alt="Post" className="post-picture" />}
               </div>
               <div className="post-likes">
-                <img
-                  src={post.likedBy.includes(currentUser?.username) ? likeIconFull : likeIcon}
-                  className="post-like-button"
-                  onClick={() => handleLike(post.userIndex, post.postIndex)}
-                  alt="Like Button"
-                />
+                <img src={post.likedBy.includes(currentUser?.username) ? likeIconFull : likeIcon} className="post-like-button" onClick={() => handleLike(post.userIndex, post.postIndex)} alt="Like Button" />
                 <p>{post.likes}</p>
               </div>
               <p>
