@@ -110,3 +110,40 @@
   background-color: #0c0c0c;
   text-align: center;
 }
+
+
+/* Home container */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main content layout: flex to place sidebar and content side by side */
+.main-content {
+  display: flex;
+  flex: 2; /* Takes up the remaining space after the header */
+  padding: 0px;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 300px; /* Adjust sidebar width */
+  background-color: #1c1c1c;
+  padding: 20px;
+  height: auto; /* Let the sidebar grow with content */
+  box-sizing: border-box;
+  margin-right: 20px; /* Space between sidebar and posts */
+}
+
+/* Post content Home page */
+.post-content {
+  flex: 1; /* Take remaining space */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: flex-start; /* Align items to the top */
+  background-color: #1c1c1c;
+  color: rgb(255, 255, 255);
+  padding: 20px;
+  box-sizing: border-box;
+}

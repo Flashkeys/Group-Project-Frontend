@@ -5,6 +5,7 @@ import Footer from "../jsx/Footer.jsx";
 import ShowAllPosts from "./ShowAllPosts.jsx";
 import Users from '../json/users.json';
 import CreatePost from "./CreatePost.jsx";
+import SideBar from "./SideBar.jsx";
 
 const Home = () => {
 
@@ -21,17 +22,18 @@ const Home = () => {
   return (
     <div className="home-container">
       <Header />
-      {currentUser && currentUser.isLoggedIn ? (
-        <div>
-     {/*     <p>Logged in as: {currentUser.username}</p> */}
-          <CreatePost />
+      <div className="main-content">
+        <SideBar className="sidebar" />
+        <div className="post-content">
+          {currentUser && currentUser.isLoggedIn && (
+            <div>
+              {/* <p>Logged in as: {currentUser.username}</p> */}
+              <CreatePost />
+            </div>
+          )}
+          <ShowAllPosts />
         </div>
-      ) : (
-        <div>
-          
-        </div>
-      )}
-      <ShowAllPosts />
+      </div>
       <Footer />
     </div>
   );
