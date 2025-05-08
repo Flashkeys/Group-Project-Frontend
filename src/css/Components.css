@@ -1,25 +1,18 @@
-/* This CSS file is for styling all the components */
-
-/* Posts Container */
+/* Post Layout */
 .posts-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  /* Stack post cards vertically */
-  min-height: 100vh;
-  /* Full viewport height */
-  color: rgb(255, 255, 255);
-  background-color: #1c1c1c;
-  /* Optional: for contrast */
+  align-items: center;
+  justify-content: flex-start;
   padding: 20px;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #1c1c1c;
 }
 
 .post-header {
-  display: flex;
-  justify-content: flex-start;
+  width: 100%;
   font-size: 2.5rem;
-  margin-bottom: 20px;
   color: #44e0ff;
 }
 
@@ -75,38 +68,41 @@
 }
 
 .post-card {
+  width: 100%;
   background-color: #2c2c2c;
-  color: whitesmoke;
   border-radius: 8px;
   padding: 20px;
-  width: 100%;
+  margin-bottom: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
-  text-align: Left;
-  margin-bottom: 20px;
-  /* Space between cards if multiple */
 }
 
 .post-picture {
-  width: 800px;
-  height: 500px;
+  width: 100%;
+  height: auto;
   border-radius: 8px;
-  margin: 20px auto;
-  /* center horizontally */
+  margin: 20px 0;
   display: block;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Posted images hover */
-.post-container img:hover,
 .post-card img:hover {
   transform: scale(1.02);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
 }
 
+.post-date {
+  font-size: 0.8rem;
+  color: #a0a0a0;
+  margin-bottom: 10px;
+}
+
 .post-content {
+  font-size: 1.6rem;
+  line-height: 1.6;
   margin-bottom: 20px;
+  border-radius: 8px;
 }
 
 .post-like-button {
@@ -114,38 +110,42 @@
   height: 35px;
   padding: 3px;
   background-color: #44e0ff;
-  display: block;
-  cursor: pointer;
-  border-radius: 20px;
 }
 
-.post-like-button:hover {
-  background-color: #44e0ff;
-  color: #ffffff;
-  transform: scale(1.05);
-  transition: background-color 0.3s ease, transform 0.3s ease;
+.post-content span {
+  display: block;
+  margin-bottom: 10px;
 }
 
 .post-likes {
   display: flex;
-  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.post-like-button {
+  width: 35px;
+  height: 35px;
+  padding: 3px;
+  background-color: #44e0ff;
+  border-radius: 20px;
+  cursor: pointer;
+  display: block;
+  border: none;
+}
+
+.post-like-button:hover {
+  background-color: #44e0ff;
+  transform: scale(1.05);
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .post-likes p {
-  color: #ffffff;
   margin-left: 10px;
+  color: #ffffff;
 }
 
-
-/* Footer */
-.footer {
-  padding: 20px;
-  background-color: #0c0c0c;
-  text-align: center;
-  font-size: 1.2rem;
-}
-
-/* Login container */
+/* Login & Create Post */
 .login-container {
   max-width: 400px;
   margin: 80px auto;
@@ -155,44 +155,35 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-/* Error message */
 .login-container .error {
   color: #ff6b6b;
   text-align: center;
   margin-top: 10px;
 }
 
-/* Create post container */
 .create-post-container {
   background-color: #1c1c1c;
-  color: whitesmoke;
   padding: 20px;
   width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-  text-align: left;
 }
 
-/* Create post inner container */
 .create-post-inner {
   background-color: #2c2c2c;
   border-radius: 8px;
-  color: whitesmoke;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-  text-align: left;
 }
 
-/* profile container */
+/* Profile Layout */
 .profile-container {
   background-color: #1c1c1c;
   padding: 20px;
 }
 
 .profile-inner {
+  max-width: 800px;
   margin: 0 auto;
-  text-align: left;
   background-color: #2c2c2c;
   border-radius: 8px;
   padding: 20px;
@@ -208,29 +199,25 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
-/* Footer */
+/* Home & Layout */
 .home-container {
   background-color: #0c0c0c;
-  text-align: center;
-}
-
-
-/* Home container */
-.home-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  text-align: left;
 }
 
-/* Main content layout: flex to place sidebar and content side by side */
 .main-content {
   display: flex;
   flex: 2;
   /* Takes up the remaining space after the header */
   padding: 0px;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
-/* Sidebar styling */
+/* Sidebar */
 .sidebar {
   width: 300px;
   /* Adjust sidebar width */
@@ -241,9 +228,13 @@
   box-sizing: border-box;
   margin-right: 20px;
   /* Space between sidebar and posts */
+  background-color: #1c1c1c;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-right: 20px;
 }
 
-/* Post content Home page */
+/* Main Post Content */
 .post-content {
   flex: 1;
   /* Take remaining space */
@@ -253,7 +244,55 @@
   justify-content: flex-start;
   /* Align items to the top */
   background-color: #1c1c1c;
-  color: rgb(255, 255, 255);
   padding: 20px;
   box-sizing: border-box;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  background-color: #0c0c0c;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: auto;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .post-header {
+    font-size: 2rem;
+  }
+
+  .post-content {
+    font-size: 1.2rem;
+    padding: 15px;
+  }
+
+  .post-like-button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .main-content {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .post-content {
+    width: 100%;
+  }
+
+  .login-container {
+    margin: 40px 20px;
+    padding: 30px;
+  }
+
+  .post-card {
+    padding: 15px;
+  }
 }

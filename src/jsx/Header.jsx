@@ -8,8 +8,8 @@ const Header = () => {
   const [searchResults, setSearchResults] = useState([]);
   const currentUser = localStorage.getItem("currentUser"); // Check if user is logged in
   const isLoggedIn = !!currentUser; // Determine login status based on currentUser
-  const user = isLoggedIn ? JSON.parse(currentUser) : null;
-  const userProfileImage = "https://via.placeholder.com/40"; // Replace with user's actual profile image URL
+ // const user = isLoggedIn ? JSON.parse(currentUser) : null;
+ // const userProfileImage = "https://via.placeholder.com/40"; // Replace with user's actual profile image URL
   const navigate = useNavigate();
 
   useEffect(() => {
