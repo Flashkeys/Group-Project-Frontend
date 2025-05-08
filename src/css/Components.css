@@ -172,6 +172,15 @@
   padding: 20px;
 }
 
+.profile-inner img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 20px auto; /* center horizontally */
+  display: block;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
 /* Footer */
 .home-container {
   background-color: #0c0c0c;
