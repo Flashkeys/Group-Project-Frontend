@@ -50,6 +50,52 @@
   height: 30px;
   vertical-align: middle;
 }
+/* Style the search input */
+.header input[type="text"] {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 150px;
+}
+
+/* Ensure dropdown is positioned relative to input */
+.search-container {
+  position: relative;
+}
+
+/* Style the search results dropdown */
+.search-results {
+  position: absolute;
+  top: 100%; /* position right below input */
+  left: 0;
+  background-color: white;
+  color: black;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 5px;
+  width: 100%; /* match input width */
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Each user in the dropdown */
+.search-results div {
+  padding: 8px 12px;
+}
+
+/* Highlight on hover */
+.search-results div:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+/* Optional: message when no users found */
+.search-results p {
+  padding: 8px 12px;
+  margin: 0;
+}
 
 /* Responsive adjustments */
 @media (max-width: 600px) {
