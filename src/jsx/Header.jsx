@@ -65,19 +65,12 @@ const Header = () => {
                 )}
               </div>
             </li>
-            <li>
-              <a href="/profile">
-                <img src={userProfileImage} alt="Profile" className="profile-pic" />
-              </a>
-            </li>
             <li><a href="/liked">Liked Posts</a></li>
             <li>
               <a href="/messages">
                 <img src={messageIcon} alt="Messages" className="message-icon" />
               </a>
             </li>
-            
-            {user && <li>Logged in as: {user.username}</li>}
             <li>
               <button onClick={() => { 
                 localStorage.removeItem("currentUser"); 
@@ -85,7 +78,7 @@ const Header = () => {
               }}>Logout</button>
             </li>
           </>
-          
+
         ) : (
           <>
             <li><a href="/login">Login</a></li>
