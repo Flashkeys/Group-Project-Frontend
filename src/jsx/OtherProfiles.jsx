@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router";
 import Header from "./Header";
-
+import { Link } from "react-router";
 const OtherProfiles = () => {
   // Get the username from the URL parameters
   const { username } = useParams();
@@ -31,7 +31,21 @@ const OtherProfiles = () => {
               <p>Date: {new Date(post.datePosted).toLocaleString()}</p>
               {post.picture && <img src={post.picture} alt="Post" className="post-picture" />}
               <p>Likes: {post.likes}</p>
-              <p>Liked by: {post.likedBy.join(", ") || "No likes yet"}</p>
+              <p>
+                Liked by:{" "}
+                {post.likedBy.length > 0 ? (
+                  post.likedBy.map((liker, likerIndex) => (
+                    <span key={likerIndex}>
+                      <Link to={`/profile/${liker}`} className="username-link">
+                        {liker}
+                      </Link>
+                      {likerIndex < post.likedBy.length - 1 && ", "}
+                    </span>
+                  ))
+                ) : (
+                  "No likes yet"
+                )}
+              </p>
             </div>
           ))
         ) : (

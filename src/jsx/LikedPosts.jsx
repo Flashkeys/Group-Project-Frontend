@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import '../css/Components.css';
 import Users from '../json/users.json';
 import Header from "./Header";
+import { Link } from "react-router";
 
 const LikedPosts = () => {
   const currentUser = localStorage.getItem("currentUser");
@@ -53,7 +54,21 @@ const LikedPosts = () => {
               <p>{post.datePosted}</p>
               {post.picture && <img src={post.picture} alt="Post" />}
               <p>Likes: {post.likes}</p>
-              <p>Liked by: {post.likedBy ? post.likedBy.join(", ") : "None"}</p>
+              <p>
+                Liked by:{" "}
+                {post.likedBy.length > 0 ? (
+                  post.likedBy.map((liker, likerIndex) => (
+                    <span key={likerIndex}>
+                      <Link to={`/profile/${liker}`} className="username-link">
+                        {liker}
+                      </Link>
+                      {likerIndex < post.likedBy.length - 1 && ", "}
+                    </span>
+                  ))
+                ) : (
+                  "No likes yet"
+                )}
+              </p>
             </div>
           ))
         ) : (
