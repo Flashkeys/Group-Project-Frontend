@@ -105,13 +105,6 @@
   border-radius: 8px;
 }
 
-.post-like-button {
-  width: 35px;
-  height: 35px;
-  padding: 3px;
-  background-color: #44e0ff;
-}
-
 .post-content span {
   display: block;
   margin-bottom: 10px;
@@ -194,6 +187,7 @@
   height: auto;
   border-radius: 8px;
   margin: 20px auto;
+  margin: 20px auto;
   /* center horizontally */
   display: block;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
@@ -210,9 +204,6 @@
 
 .main-content {
   display: flex;
-  flex: 2;
-  /* Takes up the remaining space after the header */
-  padding: 0px;
   width: 100%;
   flex-wrap: wrap;
 }
@@ -220,14 +211,6 @@
 /* Sidebar */
 .sidebar {
   width: 300px;
-  /* Adjust sidebar width */
-  background-color: #1c1c1c;
-  padding: 20px;
-  height: auto;
-  /* Let the sidebar grow with content */
-  box-sizing: border-box;
-  margin-right: 20px;
-  /* Space between sidebar and posts */
   background-color: #1c1c1c;
   padding: 20px;
   box-sizing: border-box;
@@ -237,12 +220,6 @@
 /* Main Post Content */
 .post-content {
   flex: 1;
-  /* Take remaining space */
-  display: flex;
-  flex-direction: column;
-  /* Stack items vertically */
-  justify-content: flex-start;
-  /* Align items to the top */
   background-color: #1c1c1c;
   padding: 20px;
   box-sizing: border-box;
