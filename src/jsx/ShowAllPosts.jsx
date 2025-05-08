@@ -1,6 +1,8 @@
 import React from "react";
 import '../css/Components.css';
 import { Link } from "react-router";
+import likeIcon from '../img/like-icon.png';
+import likeIconFull from '../img/like-icon-full.png';
 
 const ShowAllPosts = () => {
   // Check if users exist in localStorage, otherwise initialize it
@@ -52,17 +54,27 @@ const ShowAllPosts = () => {
         {allPosts.length > 0 ? (
           allPosts.map((post, index) => (
             <div key={index} className="post-card">
-              <h2>{post.text}</h2>
-              <p>
-                Posted by:{" "}
-                <Link to={`/profile/${post.username}`} className="username-link">
-                  {post.username}
-                </Link>
-              </p>
-              <p>Date: {new Date(post.datePosted).toLocaleString()}</p>
-              {post.picture && <img src={post.picture} alt="Post" className="post-picture" />}
-              <button onClick={() => handleLike(post.userIndex, post.postIndex)}>Like</button>
-              <p>Likes: {post.likes}</p>
+
+              <div className="post-header">
+                <img src={post.profilePicture} alt="Profile" className="profile-picture" />
+                <div>
+                  <p>
+                    <Link to={`/profile/${post.username}`} className="username-link">
+                      {post.username}
+                    </Link>
+                  </p>
+                  <p className="post-date">Date: {new Date(post.datePosted).toLocaleString()}</p>
+                </div>
+              </div>
+
+              <div className="post-content">
+                <span>{post.text}</span>
+                {post.picture && <img src={post.picture} alt="Post" className="post-picture" />}
+              </div>
+              <div className="post-likes">
+                <img src={likeIcon} className="post-like-button" onClick={() => handleLike(post.userIndex, post.postIndex)} />
+                <p>{post.likes}</p>
+              </div>
               <p>
                 Liked by:{" "}
                 {post.likedBy.length > 0 ? (
