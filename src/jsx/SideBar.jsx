@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import '../css/Components.css';
 import Users from '../json/users.json';
-import messageIcon from '../img/message-icon.png'; // Import the message icon
 
 const SideBar = () => {
   const currentUser = localStorage.getItem("currentUser");
