@@ -44,6 +44,7 @@ const Profile = () => {
       <div className="profile-container">
       <div className="profile-inner">
       <h1>Profile</h1>
+      <a href="/edit" className="edit-profile-link">Edit Profile</a>
       <p>Username: {userProfile.username}</p>
       <p>Email: {userProfile.email}</p>
       <p>First Name: {userProfile.firstName}</p>
