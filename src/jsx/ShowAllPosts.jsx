@@ -9,6 +9,7 @@ import editIcon from '../img/edit-icon.png';
 const ShowAllPosts = () => {
   const [editingPost, setEditingPost] = useState(null);
   const [editText, setEditText] = useState("");
+  const [visibleComments, setVisibleComments] = useState({});
 
   // Check if users exist in localStorage, otherwise initialize it
   if (!localStorage.getItem("users")) {
@@ -25,7 +26,7 @@ const ShowAllPosts = () => {
       username: user.username,
       userIndex,
       postIndex,
-      profilePicture: user.profilePicture || "default-profile.png", // Fallback to default profile picture
+      profilePicture: user.profilePicture || "default-profile.png",
     }))
   ).sort((a, b) => new Date(b.datePosted) - new Date(a.datePosted));
 
@@ -80,6 +81,14 @@ const ShowAllPosts = () => {
     // Save the updated users array back to localStorage
     localStorage.setItem("users", JSON.stringify(updatedUsers));
     window.location.reload();
+  };
+
+  // Toggle comments visibility
+  const toggleComments = (postIndex) => {
+    setVisibleComments((prev) => ({
+      ...prev,
+      [postIndex]: !prev[postIndex], // Toggle visibility for the specific post
+    }));
   };
 
   return (
@@ -144,6 +153,31 @@ const ShowAllPosts = () => {
                   "No likes yet"
                 )}
               </p>
+
+              <button onClick={() => toggleComments(index)} className="toggle-comments-button">
+                {visibleComments[index] ? "Hide Comments" : "Show Comments"}
+              </button>
+              {visibleComments[index] && (
+                <div className="comments-section">
+                  <h3>Comments</h3>
+                  {post.comments && post.comments.length > 0 ? (
+                    post.comments.map((comment, commentIndex) => (
+                      <div key={commentIndex} className="comment">
+                        <p>
+                          <strong>
+                            <Link to={`/profile/${comment.username}`} className="username-link">
+                              {comment.username}
+                            </Link>
+                          </strong>: {comment.text}
+                        </p>
+                        <p className="comment-date">Date: {new Date(comment.datePosted).toLocaleString()}</p>
+                      </div>
+                    ))
+                  ) : (
+                    <p>No comments yet.</p>
+                  )}
+                </div>
+              )}
             </div>
           ))
         ) : (
