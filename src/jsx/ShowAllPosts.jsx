@@ -26,7 +26,7 @@ const ShowAllPosts = () => {
       username: user.username,
       userIndex,
       postIndex,
-      profilePicture: user.profilePicture || "default-profile.png", // Fallback to default profile picture
+      profilePicture: user.profilePicture || "default-profile.png",
     }))
   ).sort((a, b) => new Date(b.datePosted) - new Date(a.datePosted));
 
@@ -83,6 +83,7 @@ const ShowAllPosts = () => {
     window.location.reload();
   };
 
+  // Toggle comments visibility
   const toggleComments = (postIndex) => {
     setVisibleComments((prev) => ({
       ...prev,
