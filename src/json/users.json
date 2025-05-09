@@ -6,6 +6,7 @@
     "firstName": "test",
     "lastName": "123",
     "dateOfBirth": "1990-01-01",
+    "profilePicture": "https://upload.wikimedia.org/wikipedia/en/a/aa/Bart_Simpson_200px.png",
     "posts": [
       {
         "text": "testing text!",
@@ -39,6 +40,7 @@
     "firstName": "John",
     "lastName": "Doe",
     "dateOfBirth": "1990-01-01",
+    "profilePicture": "https://randomuser.me/api/portraits/men/1.jpg",
     "posts": [
       {
         "text": "Had a great day at the park!",
@@ -71,6 +73,7 @@
     "firstName": "John",
     "lastName": "Doe",
     "dateOfBirth": "1990-01-01",
+    "profilePicture": "https://randomuser.me/api/portraits/women/2.jpg",
     "posts": [
       {
         "text": "Just finished a great workout!",
@@ -102,6 +105,7 @@
     "firstName": "John",
     "lastName": "Doe",
     "dateOfBirth": "1990-01-01",
+    "profilePicture": "https://randomuser.me/api/portraits/men/3.jpg",
     "posts": [
       {
         "text": "Exploring the mountains today!",
@@ -133,6 +137,7 @@
     "firstName": "John",
     "lastName": "Doe",
     "dateOfBirth": "1990-01-01",
+    "profilePicture": "https://randomuser.me/api/portraits/women/4.jpg",
     "posts": [
       {
         "text": "Enjoying a peaceful evening by the lake.",
@@ -163,6 +168,7 @@
     "firstName": "John",
     "lastName": "Doe",
     "dateOfBirth": "1990-01-01",
+    "profilePicture": "https://randomuser.me/api/portraits/women/5.jpg",
     "posts": [
       {
         "text": "Had a great time at the concert last night!",

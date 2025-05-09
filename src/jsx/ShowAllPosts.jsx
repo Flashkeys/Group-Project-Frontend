@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import '../css/Components.css';
 import { Link } from "react-router";
 import likeIcon from '../img/like-icon.png';
 import likeIconFull from '../img/like-icon-full.png';
+import deleteIcon from '../img/delete-icon.png';
+import editIcon from '../img/edit-icon.png';
 
 const ShowAllPosts = () => {
+  const [editingPost, setEditingPost] = useState(null);
+  const [editText, setEditText] = useState("");
+
   // Check if users exist in localStorage, otherwise initialize it
   if (!localStorage.getItem("users")) {
     return <p>No users found in localStorage.</p>;
@@ -20,6 +25,7 @@ const ShowAllPosts = () => {
       username: user.username,
       userIndex,
       postIndex,
+      profilePicture: user.profilePicture || "default-profile.png", // Fallback to default profile picture
     }))
   ).sort((a, b) => new Date(b.datePosted) - new Date(a.datePosted));
 
@@ -47,6 +53,35 @@ const ShowAllPosts = () => {
     window.location.reload(); // Reload to reflect the changes
   };
 
+  const handleEdit = (userIndex, postIndex, text) => {
+    setEditingPost({ userIndex, postIndex });
+    setEditText(text);
+  };
+
+  const saveEdit = () => {
+    if (!editingPost) return;
+
+    const { userIndex, postIndex } = editingPost;
+    const updatedUsers = [...existingUsers];
+    updatedUsers[userIndex].posts[postIndex].text = editText;
+
+    // Save the updated users array back to localStorage
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    // Clear the editing state
+    setEditingPost(null);
+    window.location.reload();
+  };
+
+  const handleDelete = (userIndex, postIndex) => {
+    const updatedUsers = [...existingUsers];
+    // Remove the post from the user's posts array
+    updatedUsers[userIndex].posts.splice(postIndex, 1);
+
+    // Save the updated users array back to localStorage
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    window.location.reload();
+  };
+
   return (
     <div>
       <h1>All Posts</h1>
@@ -54,7 +89,6 @@ const ShowAllPosts = () => {
         {allPosts.length > 0 ? (
           allPosts.map((post, index) => (
             <div key={index} className="post-card">
-
               <div className="post-header">
                 <img src={post.profilePicture} alt="Profile" className="profile-picture" />
                 <div>
@@ -65,17 +99,37 @@ const ShowAllPosts = () => {
                   </p>
                   <p className="post-date">Date: {new Date(post.datePosted).toLocaleString()}</p>
                 </div>
+                <div className="post-header-buttons">
+                  {currentUser?.username === post.username && (
+                    <>
+                      {editingPost && editingPost.userIndex === post.userIndex && editingPost.postIndex === post.postIndex ? (
+                        <img src={editIcon} alt="edit" onClick={saveEdit} className="post-header-button-save" />
+                      ) : (
+                        <img src={editIcon} alt="edit" onClick={() => handleEdit(post.userIndex, post.postIndex, post.text)} className="post-header-button" />
+                      )}
+                      <img src={deleteIcon} alt="delete" onClick={() => handleDelete(post.userIndex, post.postIndex)} className="post-header-button-delete" />
+                    </>
+                  )}
+                </div>
               </div>
 
-              <div className="post-content">
-                <span>{post.text}</span>
+              <div className="post-content-container">
+                {editingPost && editingPost.userIndex === post.userIndex && editingPost.postIndex === post.postIndex ? (
+                  <textarea value={editText} onChange={(e) => setEditText(e.target.value)} className="edit-textarea" />
+                ) : (
+                  <span>{post.text}</span>
+                )}
                 {post.picture && <img src={post.picture} alt="Post" className="post-picture" />}
               </div>
-              <div className="post-likes">
-                <img src={post.likedBy.includes(currentUser?.username) ? likeIconFull : likeIcon} className="post-like-button" onClick={() => handleLike(post.userIndex, post.postIndex)} alt="Like Button" />
-                <p>{post.likes}</p>
+
+              <div className="post-actions">
+                <div className="post-likes">
+                  <img src={post.likedBy.includes(currentUser?.username) ? likeIconFull : likeIcon} className="post-like-button" onClick={() => handleLike(post.userIndex, post.postIndex)} alt="Like Button" />
+                  <p>{post.likes}</p>
+                </div>
               </div>
-              <p>
+
+              <p className="liked-by-text">
                 Liked by:{" "}
                 {post.likedBy.length > 0 ? (
                   post.likedBy.map((liker, likerIndex) => (
@@ -83,7 +137,7 @@ const ShowAllPosts = () => {
                       <Link to={`/profile/${liker}`} className="username-link">
                         {liker}
                       </Link>
-                      {likerIndex < post.likedBy.length - 1 && ", "}
+                      {likerIndex < post.likedBy.length - 1 && " "}
                     </span>
                   ))
                 ) : (

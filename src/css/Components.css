@@ -14,6 +14,58 @@
   width: 100%;
   font-size: 2.5rem;
   color: #44e0ff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-header-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  gap: 10px;
+}
+
+.post-header-button {
+  width: 35px;
+  height: 35px;
+  background-color: #44e0ff;
+  padding: 3px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.post-header-button-save {
+  width: 35px;
+  height: 35px;
+  background-color: greenyellow;
+  padding: 3px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.post-header-button-delete {
+  width: 35px;
+  height: 35px;
+  background-color: #D22B2B;
+  padding: 3px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.post-date {
+  font-size: 0.8rem;
+  color: #a0a0a0;
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.post-content span {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: #ffffff;
   margin-bottom: 20px;
 }
 
@@ -52,14 +104,22 @@
   margin-bottom: 10px;
 }
 
-.post-content {
+.post-content-container {
   font-size: 1.6rem;
   line-height: 1.6;
   margin-bottom: 20px;
   border-radius: 8px;
 }
+.post-content-container img{
+  border-radius: 8px;
+  margin: 20px auto;
+  display: block;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  height: 600px;
+  width: 900px;
+}
 
-.post-content span {
+.post-content-container span {
   display: block;
   margin-bottom: 10px;
 }
@@ -90,6 +150,15 @@
 .post-likes p {
   margin-left: 10px;
   color: #ffffff;
+}
+
+.liked-by-text {
+  display: flex;
+  justify-content: row;
+  align-items: center;
+}
+.liked-by-text span{
+  margin-top: 15px;
 }
 
 /* Login & Create Post */
@@ -141,8 +210,16 @@
   height: auto;
   border-radius: 8px;
   margin: 20px auto;
+  margin: 20px auto;
+  /* center horizontally */
   display: block;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+.profile-picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 20px;
 }
 
 /* Home & Layout */
