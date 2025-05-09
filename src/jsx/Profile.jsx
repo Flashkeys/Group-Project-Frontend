@@ -40,6 +40,10 @@ useEffect(() => {
       <div className="profile-container">
       <div className="profile-inner">
       <h1>Profile</h1>
+      
+      {userProfile.profilePicture && (
+        <img src={userProfile.profilePicture} alt="Profile" className="profile-picture" />
+      )}
       <a href="/edit" className="edit-profile-link">Edit Profile</a>
       <p>Username: {userProfile.username}</p>
       <p>Email: {userProfile.email}</p>
