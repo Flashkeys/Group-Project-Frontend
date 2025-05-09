@@ -70,7 +70,7 @@ const EditProfile = () => {
             />
           </div>
           <label>Username:</label>
-          <input type="text" name="username" value={formData.username} onChange={handleChange} required  />
+          <input type="text" name="username" value={formData.username} onChange={handleChange} readOnly  />
           <br />
           <label>Password:</label>
           <input type="password" name="password" value={formData.password} onChange={handleChange} required />
