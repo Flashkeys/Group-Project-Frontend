@@ -103,11 +103,11 @@ const ShowAllPosts = () => {
                   {currentUser?.username === post.username && (
                     <>
                       {editingPost && editingPost.userIndex === post.userIndex && editingPost.postIndex === post.postIndex ? (
-                        <img src={editIcon} onClick={saveEdit} className="post-header-button-save" />
+                        <img src={editIcon} alt="edit" onClick={saveEdit} className="post-header-button-save" />
                       ) : (
-                        <img src={editIcon} onClick={() => handleEdit(post.userIndex, post.postIndex, post.text)} className="post-header-button" />
+                        <img src={editIcon} alt="edit" onClick={() => handleEdit(post.userIndex, post.postIndex, post.text)} className="post-header-button" />
                       )}
-                      <img src={deleteIcon} onClick={() => handleDelete(post.userIndex, post.postIndex)} className="post-header-button-delete" />
+                      <img src={deleteIcon} alt="delete" onClick={() => handleDelete(post.userIndex, post.postIndex)} className="post-header-button-delete" />
                     </>
                   )}
                 </div>
