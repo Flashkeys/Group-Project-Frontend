@@ -25,6 +25,7 @@ const ShowAllPosts = () => {
       username: user.username,
       userIndex,
       postIndex,
+      profilePicture: user.profilePicture || "default-profile.png", // Fallback to default profile picture
     }))
   ).sort((a, b) => new Date(b.datePosted) - new Date(a.datePosted));
 
