@@ -48,7 +48,7 @@
 .post-header-button-delete {
   width: 35px;
   height: 35px;
-  background-color: red;
+  background-color: #D22B2B;
   padding: 3px;
   border-radius: 5px;
   cursor: pointer;
@@ -100,14 +100,22 @@
   margin-bottom: 10px;
 }
 
-.post-content {
+.post-content-container {
   font-size: 1.6rem;
   line-height: 1.6;
   margin-bottom: 20px;
   border-radius: 8px;
 }
+.post-content-container img{
+  border-radius: 8px;
+  margin: 20px auto;
+  display: block;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  height: 600px;
+  width: 900px;
+}
 
-.post-content span {
+.post-content-container span {
   display: block;
   margin-bottom: 10px;
 }
@@ -138,6 +146,15 @@
 .post-likes p {
   margin-left: 10px;
   color: #ffffff;
+}
+
+.liked-by-text {
+  display: flex;
+  justify-content: row;
+  align-items: center;
+}
+.liked-by-text span{
+  margin-top: 15px;
 }
 
 /* Login & Create Post */

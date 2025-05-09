@@ -112,7 +112,7 @@ const ShowAllPosts = () => {
                 </div>
               </div>
 
-              <div className="post-content">
+              <div className="post-content-container">
                 {editingPost && editingPost.userIndex === post.userIndex && editingPost.postIndex === post.postIndex ? (
                   <textarea value={editText} onChange={(e) => setEditText(e.target.value)} className="edit-textarea" />
                 ) : (
@@ -128,7 +128,7 @@ const ShowAllPosts = () => {
                 </div>
               </div>
 
-              <p>
+              <p className="liked-by-text">
                 Liked by:{" "}
                 {post.likedBy.length > 0 ? (
                   post.likedBy.map((liker, likerIndex) => (
@@ -136,7 +136,7 @@ const ShowAllPosts = () => {
                       <Link to={`/profile/${liker}`} className="username-link">
                         {liker}
                       </Link>
-                      {likerIndex < post.likedBy.length - 1 && ", "}
+                      {likerIndex < post.likedBy.length - 1 && " "}
                     </span>
                   ))
                 ) : (
