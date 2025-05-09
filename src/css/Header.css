@@ -3,8 +3,25 @@
   background-color: #0c0c0c;
   color: white;
   padding: 20px;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Hamburger menu button - only visible on small screens */
+.hamburger-menu {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001;
 }
 
 /* Style for the unordered list in the header */
@@ -13,24 +30,28 @@
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly; /* Distribute links evenly */
   align-items: center;
-  flex-wrap: wrap; /* Allows items to wrap on small screens */
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 /* Style for the list items in the header */
 .header li {
   margin: 0 10px;
+  width: auto; /* Allow list items to auto-adjust width */
 }
 
 /* Style for the links in the header */
 .header a {
   color: white;
   text-decoration: none;
-  padding: 20px 10px;
+  padding: 15px 10px;
   border-radius: 5px;
   display: inline-flex;
   align-items: center;
+  width: 100%; /* Ensure links cover entire width on mobile */
+  text-align: center; /* Center text */
 }
 
 /* Hover effect */
@@ -52,6 +73,7 @@
   height: 30px;
   vertical-align: middle;
 }
+
 /* Style the search input */
 .header input[type="text"] {
   padding: 8px;
@@ -101,18 +123,37 @@
 
 /* Responsive adjustments */
 @media (max-width: 600px) {
+  /* Hide the menu items by default in mobile view */
   .header ul {
+    display: none;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    width: 100%;
+    position: absolute;
+    top: 60px; /* Adjust based on header height */
+    left: 0;
+    background-color: #0c0c0c;
+    padding: 10px 0;
+  }
+
+  /* Show the hamburger menu button */
+  .hamburger-menu {
+    display: block;
+  }
+
+  /* When the menu is open, display it */
+  .header ul.open {
+    display: flex;
   }
 
   .header li {
     width: 100%;
-    margin: 5px 0;
+    margin: 10px 0;
   }
 
   .header a {
     width: 100%;
     padding: 15px;
+    text-align: center; /* Center text inside each link */
   }
 }

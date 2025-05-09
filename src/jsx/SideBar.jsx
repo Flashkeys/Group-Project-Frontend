@@ -50,9 +50,6 @@ const SideBar = () => {
         <p>Last Name: {userProfile.lastName}</p>
         <p>Date of Birth: {userProfile.dateOfBirth}</p>
         <p>Logged in as: {user.username}</p>
-        <a href="/messages">
-                <img src={messageIcon} alt="Messages" className="message-icon" />
-              </a>
       </div>
     </div>
     

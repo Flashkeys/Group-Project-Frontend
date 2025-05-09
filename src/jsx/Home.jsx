@@ -20,23 +20,26 @@ const Home = () => {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   return (
-    <div className="home-container">
+    <div>
       <Header />
-      <div className="main-content">
-        <SideBar className="sidebar" />
-        <div className="post-content">
-          {currentUser && currentUser.isLoggedIn && (
-            <div>
-              {/* <p>Logged in as: {currentUser.username}</p> */}
-              <CreatePost />
-            </div>
-          )}
-          <ShowAllPosts />
+      <div className="home-container">
+        <div className="main-content">
+          <SideBar className="sidebar" />
+          <div className="post-content">
+            {currentUser && currentUser.isLoggedIn && (
+              <div>
+                {/* <p>Logged in as: {currentUser.username}</p> */}
+                <CreatePost className="create-post" />
+              </div>
+            )}
+            <ShowAllPosts />
+          </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
+  
 
 }
 

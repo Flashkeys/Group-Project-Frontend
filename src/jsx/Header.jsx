@@ -6,10 +6,9 @@ import { useNavigate } from 'react-router';
 const Header = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to track if menu is open
   const currentUser = localStorage.getItem("currentUser"); // Check if user is logged in
   const isLoggedIn = !!currentUser; // Determine login status based on currentUser
- // const user = isLoggedIn ? JSON.parse(currentUser) : null;
- // const userProfileImage = "https://via.placeholder.com/40"; // Replace with user's actual profile image URL
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,9 +32,16 @@ const Header = () => {
     setSearchTerm(""); // Clear the search term after navigation
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(prevState => !prevState); // Toggle the menu open/close
+  };
+
   return (
     <div className="header">
-      <ul>
+      <button className="hamburger-menu" onClick={toggleMenu} aria-label="Open menu">
+        &#9776; {/* Hamburger icon */}
+      </button>
+      <ul className={isMenuOpen ? "open" : ""}> {/* Toggle menu visibility */}
         <li><a href="/">Home</a></li>
         {isLoggedIn ? (
           <>
