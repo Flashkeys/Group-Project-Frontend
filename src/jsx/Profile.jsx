@@ -6,27 +6,24 @@ import { Link } from "react-router"; // Import Link for navigation
 
 const Profile = () => {
   // Get the current user from local storage
-  const currentUser = localStorage.getItem("currentUser");
-  const loggedInUser = currentUser ? JSON.parse(currentUser) : null;
+  // const currentUser = localStorage.getItem("currentUser");
+  // const loggedInUser = currentUser ? JSON.parse(currentUser) : null;
 
   const [userProfile, setUserProfile] = useState(null);
 
-  useEffect(() => {
-    if (loggedInUser) {
-      // Find the user in the users data
-      const user = Users.find(u => u.username === loggedInUser.username);
-      setUserProfile(user);
+useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (!currentUser) {
+      window.location.href = "/login";
+      return;
     }
-  }, [loggedInUser]);
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find(u => u.username === currentUser.username);
+    setUserProfile(user);
+  }, []);
 
-  // If no user is logged in, return a message
-  if (!loggedInUser) {
-    return (
-      <div>
-        <h1>Profile</h1>
-        <p>Please log in to see your profile.</p>
-      </div>
-    );
+  if (!userProfile) {
+    return <div>Loading...</div>;
   }
 
   if (!userProfile) {
