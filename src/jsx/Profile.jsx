@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import '../css/Components.css';
-import Users from '../json/users.json'; // Import the users data
 import Header from '../jsx/Header.jsx'; // Import the Header component
 import { Link } from "react-router"; // Import Link for navigation
 
