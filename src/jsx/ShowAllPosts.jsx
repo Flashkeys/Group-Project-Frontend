@@ -10,6 +10,7 @@ const ShowAllPosts = () => {
   const [editingPost, setEditingPost] = useState(null);
   const [editText, setEditText] = useState("");
   const [visibleComments, setVisibleComments] = useState({});
+  const [hoveredComment, setHoveredComment] = useState(null);
 
   // Check if users exist in localStorage, otherwise initialize it
   if (!localStorage.getItem("users")) {
@@ -91,6 +92,31 @@ const ShowAllPosts = () => {
     }));
   };
 
+  const handleCommentLike = (userIndex, postIndex, commentIndex) => {
+    if (!currentUser || !currentUser.isLoggedIn) {
+      alert("You must be logged in to like a comment.");
+      return;
+    }
+
+    const updatedUsers = [...existingUsers];
+    const comment = updatedUsers[userIndex].posts[postIndex].comments[commentIndex];
+
+    if (!comment.likedBy) {
+      comment.likedBy = [];
+    }
+
+    if (!comment.likedBy.includes(currentUser.username)) {
+      comment.likes = (comment.likes || 0) + 1;
+      comment.likedBy.push(currentUser.username);
+    } else {
+      comment.likes -= 1;
+      comment.likedBy = comment.likedBy.filter(username => username !== currentUser.username);
+    }
+
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    window.location.reload(); // Reload to reflect changes
+  };
+
   return (
     <div>
       <h1>All Posts</h1>
@@ -157,9 +183,9 @@ const ShowAllPosts = () => {
               <button onClick={() => toggleComments(index)} className="toggle-comments-button">
                 {visibleComments[index] ? "Hide Comments" : "Show Comments"}
               </button>
+
               {visibleComments[index] && (
                 <div className="comments-section">
-                  <h3>Comments</h3>
                   {post.comments && post.comments.length > 0 ? (
                     post.comments.map((comment, commentIndex) => (
                       <div key={commentIndex} className="comment">
@@ -171,6 +197,18 @@ const ShowAllPosts = () => {
                           </strong>: {comment.text}
                         </p>
                         <p className="comment-date">Date: {new Date(comment.datePosted).toLocaleString()}</p>
+                        <div className="comment-likes">
+                          <img src={comment.likedBy?.includes(currentUser?.username) ? likeIconFull : likeIcon} className="post-like-button" onClick={() => handleCommentLike(post.userIndex, post.postIndex, commentIndex)} alt="Like Comment" onMouseEnter={() => setHoveredComment(commentIndex)} onMouseLeave={() => setHoveredComment(null)} />
+                          <p>{comment.likes || 0}</p>
+                          {hoveredComment === commentIndex && comment.likedBy && comment.likedBy.length > 0 && (
+                            <div className="like-popup">
+                              <p>Liked by:</p>
+                              {comment.likedBy.map((liker, likerIndex) => (
+                                <p key={likerIndex}>{liker}</p>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       </div>
                     ))
                   ) : (
