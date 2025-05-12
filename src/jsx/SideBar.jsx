@@ -1,24 +1,21 @@
 import React, { useState, useEffect } from "react";
 import '../css/Components.css';
-import Users from '../json/users.json';
 
 const SideBar = () => {
-  const currentUser = localStorage.getItem("currentUser");
-  const loggedInUser = currentUser ? JSON.parse(currentUser) : null;
-  const userProfileImage = "/fav2.svg"; // Replace with user's actual profile image URL
-  const isLoggedIn = !!currentUser; // Determine login status based on currentUser
-  const user = isLoggedIn ? JSON.parse(currentUser) : null;
-
   const [userProfile, setUserProfile] = useState(null);
 
   useEffect(() => {
+    const currentUser = localStorage.getItem("currentUser");
+    const loggedInUser = currentUser ? JSON.parse(currentUser) : null;
     if (loggedInUser) {
-      const user = Users.find(u => u.username === loggedInUser.username);
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const user = users.find(u => u.username === loggedInUser.username);
       setUserProfile(user);
     }
-  }, [loggedInUser]);
+  }, []); // Only run once on mount
 
-  if (!loggedInUser) {
+  const currentUser = localStorage.getItem("currentUser");
+  if (!currentUser) {
     return (
       <div className="sidebar">
         <h1>Profile</h1>
@@ -41,17 +38,20 @@ const SideBar = () => {
       <div className="profile-inner">
         <h1>Profile</h1>
         <a href="/profile">
-                <img src={userProfileImage} alt="profile" className="profile-pic" />
-              </a>
+          <img
+            src={userProfile.profilePicture || "/fav2.svg"}
+            alt="profile"
+            className="profile-pic"
+          />
+        </a>
         <h2>{userProfile.username}</h2>
         <p>Email: {userProfile.email}</p>
         <p>First Name: {userProfile.firstName}</p>
         <p>Last Name: {userProfile.lastName}</p>
         <p>Date of Birth: {userProfile.dateOfBirth}</p>
-        <p>Logged in as: {user.username}</p>
+        <p>Logged in as: {userProfile.username}</p>
       </div>
     </div>
-    
   );
 };
 
