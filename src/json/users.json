@@ -7,6 +7,36 @@
     "lastName": "123",
     "dateOfBirth": "1990-01-01",
     "profilePicture": "https://upload.wikimedia.org/wikipedia/en/a/aa/Bart_Simpson_200px.png",
+    "messages": [
+      {
+        "from": "test",
+        "to": "JohnDoe",
+        "text": "Hey John, how are you?",
+        "date": "2025-05-10T10:00:00Z",
+        "read": true
+      },
+      {
+        "from": "JohnDoe",
+        "to": "test",
+        "text": "I'm good, thanks! How about you?",
+        "date": "2025-05-10T10:01:00Z",
+        "read": true
+      },
+      {
+        "from": "JaneSmith",
+        "to": "test",
+        "text": "Hey test, how's it going?",
+        "date": "2025-05-10T10:02:00Z",
+        "read": true
+      },
+      {
+        "from": "MikeBrown",
+        "to": "test",
+        "text": "I'm doing well, thanks for asking!",
+        "date": "2025-05-10T10:03:00Z",
+        "read": true
+      }
+    ],
     "posts": [
       {
         "text": "testing text!",

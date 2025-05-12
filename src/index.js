@@ -10,6 +10,7 @@ import Login from './jsx/Login.jsx';
 import Register from './jsx/Register.jsx';
 import NotFound from './jsx/NotFound.jsx';
 import OtherProfiles from './jsx/OtherProfiles.jsx';
+import Messages from './jsx/Messages.jsx';
 
 // Save the users data to local storage
 
@@ -25,6 +26,7 @@ const Index = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/liked" element={<LikedPosts />} />
         <Route path="/edit" element={<EditProfile />} />
+        <Route path="/messages" element={<Messages />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile/:username" element={<OtherProfiles />} />
