@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from './Header.jsx';
+import '../css/Components.css';
 
 const EditProfile = () => {
   const [formData, setFormData] = useState({
@@ -33,7 +34,7 @@ const EditProfile = () => {
         profilePicture: user.profilePicture || ""
       });
     }
-  }, []); // <-- Only run once on mount
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,15 +44,21 @@ const EditProfile = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const users = JSON.parse(localStorage.getItem("users")) || [];
-    const idx = users.findIndex(u => u.username === formData.username);
-    if (idx === -1) {
+    const user = users.find(u => u.username === formData.username);
+    if (!user) {
       setError("User not found.");
       setSuccess("");
       return;
     }
-    users[idx] = { ...users[idx], ...formData };
+    user.password = formData.password;
+    user.email = formData.email;
+    user.firstName = formData.firstName;
+    user.lastName = formData.lastName;
+    user.dateOfBirth = formData.dateOfBirth;
+    user.profilePicture = formData.profilePicture;
+
     localStorage.setItem("users", JSON.stringify(users));
-    localStorage.setItem("currentUser", JSON.stringify({ ...users[idx], isLoggedIn: true }));
+    localStorage.setItem("currentUser", JSON.stringify({ ...user, isLoggedIn: true }));
     setSuccess("Profile updated!");
     setError("");
     setTimeout(() => { window.location.href = "/profile"; }, 1000);
@@ -60,40 +67,36 @@ const EditProfile = () => {
   return (
     <div>
       <Header />
-      <div>
-        <h1>Edit Profile</h1>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <img
-              src={formData.profilePicture || "default-profile.png"}
-              alt="Profile"
-            />
-          </div>
-          <label>Username:</label>
-          <input type="text" name="username" value={formData.username} onChange={handleChange} readOnly  />
-          <br />
-          <label>Password:</label>
-          <input type="password" name="password" value={formData.password} onChange={handleChange} required />
-          <br />
-          <label>Email:</label>
-          <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-          <br />
-          <label>First Name:</label>
-          <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
-          <br />
-          <label>Last Name:</label>
-          <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
-          <br />
-          <label>Date of Birth:</label>
-          <input type="date" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} required />
-          <br />
-          <label>Profile Picture URL:</label>
-          <input type="url" name="profilePicture" value={formData.profilePicture} onChange={handleChange} />
-          <br />
-          <button type="submit">Save Changes</button>
-        </form>
-        {error && <p>{error}</p>}
-        {success && <p>{success}</p>}
+      <div className="profile-container">
+        <div className="profile-inner">
+          <h1>Edit Profile</h1>
+          <form onSubmit={handleSubmit} className="edit-profile-form">
+            <div style={{ textAlign: "center" }}>
+              <img
+                src={formData.profilePicture || "default-profile.png"}
+                alt="Profile"
+                className="profile-picture"
+              />
+            </div>
+            <label>Username:</label>
+            <input type="text" name="username" value={formData.username} readOnly className="edit-profile-input" />
+            <label>Password:</label>
+            <input type="password" name="password" value={formData.password} onChange={handleChange} required className="edit-profile-input" />
+            <label>Email:</label>
+            <input type="email" name="email" value={formData.email} onChange={handleChange} required className="edit-profile-input" />
+            <label>First Name:</label>
+            <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required className="edit-profile-input" />
+            <label>Last Name:</label>
+            <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required className="edit-profile-input" />
+            <label>Date of Birth:</label>
+            <input type="date" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} required className="edit-profile-input" />
+            <label>Profile Picture URL:</label>
+            <input type="url" name="profilePicture" value={formData.profilePicture} onChange={handleChange} className="edit-profile-input" />
+            <button type="submit" className="edit-profile-button">Save Changes</button>
+          </form>
+          {error && <p className="error">{error}</p>}
+          {success && <p className="success">{success}</p>}
+        </div>
       </div>
     </div>
   );
