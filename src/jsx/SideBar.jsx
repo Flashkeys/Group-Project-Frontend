@@ -37,6 +37,7 @@ const SideBar = () => {
     <div className="sidebar">
       <div className="profile-inner">
         <h1>Profile</h1>
+        <a href="/edit" className="edit-profile-link">Edit Profile</a>
         <a href="/profile">
           <img
             src={userProfile.profilePicture || "/fav2.svg"}
