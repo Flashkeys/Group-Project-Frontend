@@ -37,7 +37,6 @@ const SideBar = () => {
   return (
     <div className="sidebar">
       <div className="profile-inner">
-        <a href="/edit" className="edit-profile-link">Edit Profile</a>
         <a href="/profile">
           <img
             src={userProfile.profilePicture || "/fav2.svg"}
@@ -51,6 +50,7 @@ const SideBar = () => {
         <p>Last Name: {userProfile.lastName}</p>
         <p>Date of Birth: {userProfile.dateOfBirth}</p>
         <p>Logged in as: {userProfile.username}</p>
+        <a href="/edit" >Edit Profile</a>
       </div>
 
       {/* Add Activity (formerly Notifications) */}

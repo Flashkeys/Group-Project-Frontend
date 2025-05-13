@@ -205,19 +205,11 @@
   padding: 20px;
 }
 
-.edit-profile-link {
-  color: #44e0ff;
-  text-decoration: none;
-  margin-bottom: 20px;
-}
-
 .profile-inner img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-  margin: 20px auto;
-  margin: 20px auto;
-  /* center horizontally */
+  margin: 10px auto;
   display: block;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
@@ -241,7 +233,6 @@
 .main-content {
   display: flex;
   width: 100%;
- 
 }
 
 /* Sidebar */
@@ -257,8 +248,16 @@
 }
 
 .sidebar img {
-  height: 80px;
+  height: 120px;
   border-radius: 8px;
+}
+
+.sidebar a {
+text-align: center;
+  display: block;
+  color: #ffffff;
+  border-radius: 8px;
+  background-color: #3c3c3c;
 }
 
 /* Activity */
