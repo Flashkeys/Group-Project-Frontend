@@ -7,6 +7,32 @@
     "lastName": "123",
     "dateOfBirth": "1990-01-01",
     "profilePicture": "https://upload.wikimedia.org/wikipedia/en/a/aa/Bart_Simpson_200px.png",
+    "notifications": [
+      {
+        "type": "message",
+        "from": "JaneSmith",
+        "text": "Hey test, how's it going?",
+        "date": "2025-05-10T10:02:00Z",
+        "read": false
+      },
+      {
+        "type": "like",
+        "from": "MikeBrown",
+        "postText": "testing text!",
+        "date": "2025-05-05T14:16:00Z",
+        "read": false
+      },
+      {
+        "type": "comment",
+        "from": "SarahWhite",
+        "text": "What book is it?",
+        "onPost": "Loving this new book I'm reading.",
+        "date": "2025-05-03T11:00:00Z",
+        "read": false
+      }
+      
+    ],
+
     "messages": [
       {
         "from": "test",

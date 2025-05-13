@@ -1,5 +1,7 @@
+// SideBar.jsx
 import React, { useState, useEffect } from "react";
-import '../css/Components.css';
+import Activity from "./Activity"; 
+import "../css/Components.css";
 
 const SideBar = () => {
   const [userProfile, setUserProfile] = useState(null);
@@ -52,6 +54,9 @@ const SideBar = () => {
         <p>Date of Birth: {userProfile.dateOfBirth}</p>
         <p>Logged in as: {userProfile.username}</p>
       </div>
+
+      {/* Add Activity (formerly Notifications) */}
+      <Activity notifications={userProfile.notifications || []} />
     </div>
   );
 };
