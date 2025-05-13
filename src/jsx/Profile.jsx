@@ -50,6 +50,8 @@ useEffect(() => {
       <p>First Name: {userProfile.firstName}</p>
       <p>Last Name: {userProfile.lastName}</p>
       <p>Date of Birth: {userProfile.dateOfBirth}</p>
+      <p>Followers: {userProfile.followers ? userProfile.followers.length : 0}</p>
+      <p>Following: {userProfile.following ? userProfile.following.length : 0}</p>
       </div>
       </div>
 

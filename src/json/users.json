@@ -7,6 +7,18 @@
     "lastName": "123",
     "dateOfBirth": "1990-01-01",
     "profilePicture": "https://upload.wikimedia.org/wikipedia/en/a/aa/Bart_Simpson_200px.png",
+    "following": [
+      "JohnDoe",
+      "JaneSmith",
+      "MikeBrown",
+      "AliceGreen"
+    ],
+    "followers": [
+      "MikeBrown",
+      "JaneSmith",
+      "SarahWhite",
+      "TomBlack"
+    ],
     "notifications": [
       {
         "type": "message",
@@ -30,9 +42,7 @@
         "date": "2025-05-03T11:00:00Z",
         "read": false
       }
-      
     ],
-
     "messages": [
       {
         "from": "test",
@@ -129,6 +139,16 @@
     "lastName": "Doe",
     "dateOfBirth": "1990-01-01",
     "profilePicture": "https://randomuser.me/api/portraits/men/1.jpg",
+    "following": [
+      "test",
+      "JaneSmith",
+      "MikeBrown"
+    ],
+    "followers": [
+      "test",
+      "JaneSmith",
+      "AliceGreen"
+    ],
     "posts": [
       {
         "text": "Had a great day at the park!",
@@ -194,6 +214,17 @@
     "lastName": "Doe",
     "dateOfBirth": "1990-01-01",
     "profilePicture": "https://randomuser.me/api/portraits/women/2.jpg",
+    "following": [
+      "test",
+      "JohnDoe",
+      "AliceGreen",
+      "MikeBrown"
+    ],
+    "followers": [
+      "test",
+      "JohnDoe",
+      "MikeBrown"
+    ],
     "posts": [
       {
         "text": "Just finished a great workout!",
@@ -258,6 +289,16 @@
     "lastName": "Doe",
     "dateOfBirth": "1990-01-01",
     "profilePicture": "https://randomuser.me/api/portraits/men/3.jpg",
+    "following": [
+      "test",
+      "JaneSmith"
+    ],
+    "followers": [
+      "test",
+      "JohnDoe",
+      "JaneSmith",
+      "AliceGreen"
+    ],
     "posts": [
       {
         "text": "Exploring the mountains today!",
@@ -329,6 +370,8 @@
     "lastName": "Doe",
     "dateOfBirth": "1990-01-01",
     "profilePicture": "https://randomuser.me/api/portraits/women/4.jpg",
+    "following": ["JohnDoe", "JaneSmith", "MikeBrown"],
+    "followers": ["test", "JaneSmith", "MikeBrown"],
     "posts": [
       {
         "text": "Enjoying a peaceful evening by the lake.",
@@ -392,6 +435,8 @@
     "lastName": "Doe",
     "dateOfBirth": "1990-01-01",
     "profilePicture": "https://randomuser.me/api/portraits/women/5.jpg",
+    "following": ["test", "JaneSmith"],
+    "followers": ["MikeBrown", "test"],
     "posts": [
       {
         "text": "Had a great time at the concert last night!",
