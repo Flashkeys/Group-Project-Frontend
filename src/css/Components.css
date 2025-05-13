@@ -6,7 +6,6 @@
   justify-content: flex-start;
   width: 100%;
   min-height: 100vh;
-  background-color: #1c1c1c;
 }
 
 .post-header {
@@ -83,9 +82,6 @@
   max-width: 700px;
   height: auto;
   border-radius: 8px;
-  margin: 20px 0;
-  margin-left: auto;
-  margin-right: auto;
   display: block;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -108,6 +104,8 @@
   line-height: 1.6;
   margin-bottom: 20px;
   border-radius: 8px;
+  padding: 8px;
+  background-color: #1c1c1c;
 }
 .post-content-container img{
   border-radius: 8px;
@@ -121,18 +119,20 @@
 .post-content-container span {
   display: block;
   margin-bottom: 10px;
+  padding: 10px;
 }
 
 .post-likes {
   display: flex;
   align-items: center;
   margin-top: 10px;
+  padding: 10px;
 }
 
 .post-like-button {
   width: 35px;
   height: 35px;
-  padding: 3px;
+  padding: 8px;
   background-color: #44e0ff;
   border-radius: 20px;
   cursor: pointer;
