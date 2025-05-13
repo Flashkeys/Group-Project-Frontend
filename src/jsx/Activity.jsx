@@ -3,32 +3,42 @@ import "../css/Components.css";
 
 const Activity = () => {
   const [notifications, setNotifications] = useState([]);
+  const [showUnreadOnly, setShowUnreadOnly] = useState(false);
 
   useEffect(() => {
-    // Get current user from localStorage
     const currentUser = localStorage.getItem("currentUser");
 
-    // If the user exists in localStorage, get their notifications
     if (currentUser) {
       const loggedInUser = JSON.parse(currentUser);
+      console.log("Loaded user:", loggedInUser);
       const userNotifications = loggedInUser.notifications || [];
       setNotifications(userNotifications);
+    } else {
+      console.warn("No currentUser found in localStorage");
     }
   }, []);
 
-  // Sort notifications by date
-  const sortedNotifications = notifications.sort(
+  const sortedNotifications = [...notifications].sort(
     (a, b) => new Date(b.date) - new Date(a.date)
   );
+
+  const displayedNotifications = showUnreadOnly
+    ? sortedNotifications.filter((note) => !note.read)
+    : sortedNotifications;
 
   return (
     <div className="activity">
       <h3>Activity</h3>
-      {sortedNotifications.length === 0 ? (
+
+      <button onClick={() => setShowUnreadOnly(!showUnreadOnly)}>
+        {showUnreadOnly ? "Show All" : "Show Unread Only"}
+      </button>
+
+      {displayedNotifications.length === 0 ? (
         <p>No notifications.</p>
       ) : (
         <ul>
-          {sortedNotifications.map((note, index) => (
+          {displayedNotifications.map((note, index) => (
             <li key={index} className={!note.read ? "unread" : ""}>
               {note.type === "message" && (
                 <span>

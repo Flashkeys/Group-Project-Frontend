@@ -1,4 +1,3 @@
-// SideBar.jsx
 import React, { useState, useEffect } from "react";
 import Activity from "./Activity"; 
 import "../css/Components.css";
@@ -14,7 +13,7 @@ const SideBar = () => {
       const user = users.find(u => u.username === loggedInUser.username);
       setUserProfile(user);
     }
-  }, []); // Only run once on mount
+  }, []); 
 
   const currentUser = localStorage.getItem("currentUser");
   if (!currentUser) {
@@ -38,8 +37,6 @@ const SideBar = () => {
   return (
     <div className="sidebar">
       <div className="profile-inner">
-        <h1>Profile</h1>
-        <a href="/edit" className="edit-profile-link">Edit Profile</a>
         <a href="/profile">
           <img
             src={userProfile.profilePicture || "/fav2.svg"}
@@ -53,6 +50,7 @@ const SideBar = () => {
         <p>Last Name: {userProfile.lastName}</p>
         <p>Date of Birth: {userProfile.dateOfBirth}</p>
         <p>Logged in as: {userProfile.username}</p>
+        <a href="/edit" >Edit Profile</a>
       </div>
 
       {/* Add Activity (formerly Notifications) */}
