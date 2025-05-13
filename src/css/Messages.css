@@ -177,4 +177,36 @@ button.send-button {
   display: flex;
   flex-direction: column;
 }
+/* ...existing styles... */
 
+.conversation-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.new-chat-btn {
+  font-size: 1.5rem;
+  background: #44e0ff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-chat-dropdown {
+  background: #222;
+  border: 1px solid #44e0ff;
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.no-new-chat {
+  color: #aaa;
+}
