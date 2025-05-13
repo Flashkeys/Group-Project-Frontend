@@ -243,6 +243,7 @@
 /* Sidebar */
 .sidebar {
   min-width: 300px;
+  height: 100vh;
   background-color: #1c1c1c;
   padding: 20px;
   box-sizing: border-box;
