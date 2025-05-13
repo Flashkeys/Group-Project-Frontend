@@ -114,9 +114,70 @@ const ShowAllPosts = () => {
     }
 
     localStorage.setItem("users", JSON.stringify(updatedUsers));
-    window.location.reload();
+    //window.location.reload();
   };
 
+  // add a comment to a post
+  const handleAddComment = (userIndex, postIndex) => {
+    if (!currentUser || !currentUser.isLoggedIn) {
+      alert("You must be logged in to comment.");
+      return;
+    }
+
+    if (!editText.trim()) {
+      alert("Comment cannot be empty.");
+      return;
+    }
+
+    const updatedUsers = [...existingUsers];
+    const post = updatedUsers[userIndex].posts[postIndex];
+
+    const newComment = {
+      username: currentUser.username,
+      text: editText.trim(),
+      datePosted: new Date().toISOString(),
+      likes: 0,
+      likedBy: [],
+    };
+
+    if (!post.comments) {
+      post.comments = [];
+    }
+
+    post.comments.push(newComment);
+
+    // Save the updated users array back to localStorage
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    setEditText(""); // Clear the textarea
+    //window.location.reload(); // Reload to reflect the changes
+  };
+
+  // edit a comment
+  const handleEditComment = (userIndex, postIndex, commentIndex, text) => {
+    setEditingPost({ userIndex, postIndex, commentIndex });
+    setEditText(text);
+  };
+
+  const saveEditComment = (userIndex, postIndex, commentIndex) => {
+    if (!editingPost) return;
+
+    const updatedUsers = [...existingUsers];
+    updatedUsers[userIndex].posts[postIndex].comments[commentIndex].text = editText;
+
+    // Save the updated users array back to localStorage
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    setEditingPost(null); // Exit edit mode
+    window.location.reload(); // Reload to reflect the changes
+  };
+
+  const handleDeleteComment = (userIndex, postIndex, commentIndex) => {
+    const updatedUsers = [...existingUsers];
+    updatedUsers[userIndex].posts[postIndex].comments.splice(commentIndex, 1);
+
+    // Save the updated users array back to localStorage
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    window.location.reload(); // Reload to reflect the changes
+  };
 
   return (
     <div>
@@ -188,6 +249,10 @@ const ShowAllPosts = () => {
               {/* Comments for posts */}
               {visibleComments[index] && (
                 <div className="posts-container">
+
+                  <textarea className="edit-textarea" placeholder="Write a comment..." value={editText} onChange={(e) => setEditText(e.target.value)} />
+                  <button onClick={() => handleAddComment(post.userIndex, post.postIndex)} className="add-comment-button">Add Comment</button>
+
                   {post.comments && post.comments.length > 0 ? (
                     post.comments.map((comment, commentIndex) => {
 
@@ -205,19 +270,18 @@ const ShowAllPosts = () => {
                             </p>
                             <p className="post-date">Date: {new Date(comment.datePosted).toLocaleString()}</p>
                             <div className="post-header-buttons">
-                              {currentUser?.username === post.username && (
+                              {currentUser?.username === comment.username && (
                                 <>
                                   {editingPost && editingPost.userIndex === post.userIndex && editingPost.postIndex === post.postIndex ? (
-                                    <img src={editIcon} alt="edit" className="post-header-button-save" />
+                                    <img src={editIcon} alt="edit" onClick={() => saveEditComment(post.userIndex, post.postIndex, commentIndex)} className="post-header-button-save" />
                                   ) : (
-                                    <img src={editIcon} alt="edit" className="post-header-button" />
+                                    <img src={editIcon} alt="edit" onClick={() => handleEditComment(post.userIndex, post.postIndex, commentIndex, comment.text)} className="post-header-button" />
                                   )}
-                                  <img src={deleteIcon} alt="delete" className="post-header-button-delete" />
+                                  <img src={deleteIcon} alt="delete" onClick={() => handleDeleteComment(post.userIndex, post.postIndex, commentIndex)} className="post-header-button-delete" />
                                 </>
                               )}
                             </div>
                           </div>
-
 
                           <p>{comment.text}</p>
 
