@@ -4,7 +4,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 20px;
   width: 100%;
   min-height: 100vh;
   background-color: #1c1c1c;
@@ -179,7 +178,6 @@
 
 .create-post-container {
   background-color: #1c1c1c;
-  padding: 20px;
   padding-top: 100px;
   width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -205,6 +203,12 @@
   background-color: #2c2c2c;
   border-radius: 8px;
   padding: 20px;
+}
+
+.edit-profile-link {
+  color: #44e0ff;
+  text-decoration: none;
+  margin-bottom: 20px;
 }
 
 .profile-inner img {
@@ -264,6 +268,7 @@
   margin-top: 10px;
   border-radius: 8px;
   margin-bottom: 20px;
+  max-width: 300px;
 }
 
 /* Main Post Content */
@@ -285,7 +290,7 @@
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-  /* Gör headern mindre om det behövs */
+
   .header {
     padding: 15px;
   }
@@ -305,13 +310,11 @@
     padding: 15px;
   }
 
-  /* Gör om layout till kolumn */
   .main-content {
     flex-direction: column;
     align-items: stretch;
   }
 
-  /* Sidomenyn tar full bredd och är inte sticky */
   .sidebar {
     width: 100%;
     margin-right: 0;
@@ -320,7 +323,6 @@
     top: auto;
   }
 
-  /* Huvudinnehållet tar full bredd */
   .post-content {
     width: 100%;
     padding: 15px;
@@ -352,7 +354,6 @@
     height: auto;
   }
 }
-/* ...existing code... */
 
 .edit-profile-form {
   display: flex;
