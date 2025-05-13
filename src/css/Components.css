@@ -227,33 +227,41 @@
 /* Home & Layout */
 .home-container {
   background-color: #0c0c0c;
-  display: flex;
   flex-direction: column;
   min-height: 100vh;
   text-align: left;
+  width: 100%;
+  display: flex;
 }
 
 .main-content {
   display: flex;
   width: 100%;
-  flex-wrap: wrap;
+ 
 }
 
 /* Sidebar */
 .sidebar {
-  width: 300px;
+  min-width: 300px;
+  height: 100vh;
   background-color: #1c1c1c;
   padding: 20px;
   box-sizing: border-box;
-  margin-right: 20px;
   position: sticky;
-  top: 100px; /* Adjust to match your header height */
-  z-index: 998;
+  top: 100px; /* match header height */
   align-self: flex-start; /* Helps prevent stretching in flex layout */
 }
 
 .sidebar img {
-  height: auto;
+  height: 80px;
+  border-radius: 8px;
+}
+
+/* Activity */
+.activity {
+  background-color: #2c2c2c;
+  padding: 20px;
+  margin-top: 10px;
   border-radius: 8px;
   margin-bottom: 20px;
 }
