@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import '../css/Components.css';
 import Header from '../jsx/Header.jsx'; // Import the Header component
-import { Link } from "react-router"; // Import Link for navigation
+import FilterAllPosts from "./FilterAllPosts";
 
 const Profile = () => {
   // Get the current user from local storage
@@ -9,6 +9,30 @@ const Profile = () => {
   // const loggedInUser = currentUser ? JSON.parse(currentUser) : null;
 
   const [userProfile, setUserProfile] = useState(null);
+
+
+
+
+
+
+  const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  const user = existingUsers.find(user => user.username === currentUser.username);
+  const userPosts = user
+    ? user.posts.map((post, postIndex) => ({
+        ...post,
+        username: user.username,
+        postIndex,
+        profilePicture: user.profilePicture || "default-profile.png",
+      }))
+    : [];
+
+
+
+
+
+
 
 useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -55,36 +79,8 @@ useEffect(() => {
       </div>
       </div>
 
-      <div className="posts-container">
-      <h2>My Posts</h2>
-        {userProfile.posts && userProfile.posts.length > 0 ? (
-          userProfile.posts.map((post, index) => (
-            <div key={index} className="post-card">
-              <h3>{post.text}</h3>
-              <p>Date Posted: {post.datePosted}</p>
-              {post.picture && <img src={post.picture} alt="Post"/>}
-              <p>Likes: {post.likes}</p>
-              <p>
-                Liked by:{" "}
-                {post.likedBy.length > 0 ? (
-                  post.likedBy.map((liker, likerIndex) => (
-                    <span key={likerIndex}>
-                      <Link to={`/profile/${liker}`} className="username-link">
-                        {liker}
-                      </Link>
-                      {likerIndex < post.likedBy.length - 1 && ", "}
-                    </span>
-                  ))
-                ) : (
-                  "No likes yet"
-                )}
-              </p>
-            </div>
-          ))
-        ) : (
-          <p>No posts found.</p>
-        )}
-      </div>
+      <FilterAllPosts posts={userPosts} currentUser={currentUser} showEditDelete={true} />
+
     </div>
   );
 }

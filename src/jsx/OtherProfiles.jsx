@@ -1,16 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import Header from "./Header";
-import { Link } from "react-router";
+import FilterAllPosts from "./FilterAllPosts";
 
 const OtherProfiles = () => {
   const { username } = useParams();
   const [refresh, setRefresh] = useState(false);
 
+  const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+
   // Always read users and currentUser from localStorage on each render (like ShowAllPosts)
   const users = JSON.parse(localStorage.getItem("users")) || [];
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  const user = users.find(user => user.username === username);
+  //const user = users.find(user => user.username === username);
+
+
+
+
+
+  const user = existingUsers.find(user => user.username === username);
+  const userPosts = user
+    ? user.posts.map((post, postIndex) => ({
+        ...post,
+        username: user.username,
+        postIndex,
+        profilePicture: user.profilePicture || "default-profile.png",
+      }))
+    : [];
+
+
+
+
 
   const [isFollowing, setIsFollowing] = useState(false);
 
@@ -67,36 +87,7 @@ const OtherProfiles = () => {
           {isFollowing ? "Unfollow" : "Follow"}
         </button>
       )}
-      <h2>Posts</h2>
-      <div className="posts-container">
-        {user.posts && user.posts.length > 0 ? (
-          user.posts.map((post, index) => (
-            <div key={index} className="post-card">
-              <h2>{post.text}</h2>
-              <p>Date: {new Date(post.datePosted).toLocaleString()}</p>
-              {post.picture && <img src={post.picture} alt="Post" className="post-picture" />}
-              <p>Likes: {post.likes}</p>
-              <p>
-                Liked by:{" "}
-                {post.likedBy && post.likedBy.length > 0 ? (
-                  post.likedBy.map((liker, likerIndex) => (
-                    <span key={likerIndex}>
-                      <Link to={`/profile/${liker}`} className="username-link">
-                        {liker}
-                      </Link>
-                      {likerIndex < post.likedBy.length - 1 && ", "}
-                    </span>
-                  ))
-                ) : (
-                  "No likes yet"
-                )}
-              </p>
-            </div>
-          ))
-        ) : (
-          <p>No posts available.</p>
-        )}
-      </div>
+      <FilterAllPosts posts={userPosts} currentUser={currentUser} showEditDelete={false} />
     </div>
   );
 };
