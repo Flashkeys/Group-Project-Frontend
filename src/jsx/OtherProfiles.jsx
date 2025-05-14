@@ -34,9 +34,13 @@ const OtherProfiles = () => {
       loggedInUser.following = loggedInUser.following.filter(u => u !== user.username);
       profileUser.followers = profileUser.followers.filter(u => u !== loggedInUser.username);
     } else {
-      // Follow
-      loggedInUser.following.push(user.username);
-      profileUser.followers.push(loggedInUser.username);
+      // Follow (prevent duplicates)
+      if (!loggedInUser.following.includes(user.username)) {
+        loggedInUser.following.push(user.username);
+      }
+      if (!profileUser.followers.includes(loggedInUser.username)) {
+        profileUser.followers.push(loggedInUser.username);
+      }
     }
 
     localStorage.setItem("users", JSON.stringify(usersCopy));
