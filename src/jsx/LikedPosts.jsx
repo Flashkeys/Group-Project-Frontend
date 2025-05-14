@@ -17,7 +17,13 @@ const LikedPosts = () => {
       }))
   );
 
-  return <FilterAllPosts posts={likedPosts} currentUser={currentUser} showEditDelete={false} />;
+  return (
+    <div>
+      <br>
+      </br>
+      <FilterAllPosts posts={likedPosts} currentUser={currentUser} showEditDelete={false} />
+    </div>
+  );
 };
 
 export default LikedPosts;

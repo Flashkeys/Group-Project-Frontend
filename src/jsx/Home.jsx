@@ -32,6 +32,7 @@ const Home = () => {
                 <CreatePost className="create-post" />
               </div>
             )}
+            <br />
             <ShowAllPosts />
           </div>
         </div>
