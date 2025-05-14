@@ -219,6 +219,9 @@
   height: 100px;
   border-radius: 50%;
   margin-bottom: 20px;
+  padding: 5px;
+  background-color: #1c1c1c;
+  border: #2cb8d6 2px solid;
 }
 
 /* Home & Layout */

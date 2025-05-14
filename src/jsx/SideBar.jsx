@@ -36,15 +36,15 @@ const SideBar = () => {
   return (
 
     <div className="sidebar">
-      <div className="profile-inner">
-        <a href="/profile">
+      <div className="sidebar-profile">
           <img
             src={userProfile.profilePicture || "/fav2.svg"}
             alt="profile"
-            className="profile-pic"
+            className="sidebar-pic"
+            onClick={() => window.location.href = '/profile'}  // Redirect to profile page
           />
-        </a>
-        <h2>{userProfile.username}</h2>
+        <h2>Profile</h2>
+        <h3>{userProfile.username}</h3>
         <p>Email: {userProfile.email}</p>
         <p>First Name: {userProfile.firstName}</p>
         <p>Last Name: {userProfile.lastName}</p>
