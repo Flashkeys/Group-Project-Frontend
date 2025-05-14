@@ -11,13 +11,15 @@
       "JohnDoe",
       "JaneSmith",
       "MikeBrown",
-      "AliceGreen"
+      "AliceGreen",
+      "SarahWhite"
     ],
     "followers": [
       "MikeBrown",
       "JaneSmith",
       "SarahWhite",
-      "TomBlack"
+      "TomBlack",
+      "JohnDoe"
     ],
     "notifications": [
       {
@@ -223,7 +225,9 @@
     "followers": [
       "test",
       "JohnDoe",
-      "MikeBrown"
+      "MikeBrown",
+      "AliceGreen",
+      "SarahWhite"
     ],
     "posts": [
       {
@@ -370,8 +374,16 @@
     "lastName": "Doe",
     "dateOfBirth": "1990-01-01",
     "profilePicture": "https://randomuser.me/api/portraits/women/4.jpg",
-    "following": ["JohnDoe", "JaneSmith", "MikeBrown"],
-    "followers": ["test", "JaneSmith", "MikeBrown"],
+    "following": [
+      "JohnDoe",
+      "JaneSmith",
+      "MikeBrown"
+    ],
+    "followers": [
+      "test",
+      "JaneSmith",
+      "MikeBrown"
+    ],
     "posts": [
       {
         "text": "Enjoying a peaceful evening by the lake.",
@@ -435,8 +447,14 @@
     "lastName": "Doe",
     "dateOfBirth": "1990-01-01",
     "profilePicture": "https://randomuser.me/api/portraits/women/5.jpg",
-    "following": ["test", "JaneSmith"],
-    "followers": ["MikeBrown", "test"],
+    "following": [
+      "test",
+      "JaneSmith"
+    ],
+    "followers": [
+      "MikeBrown",
+      "test"
+    ],
     "posts": [
       {
         "text": "Had a great time at the concert last night!",
