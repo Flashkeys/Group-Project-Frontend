@@ -10,11 +10,7 @@ const Profile = () => {
 
   const [userProfile, setUserProfile] = useState(null);
 
-
-
-
-
-
+  // Get the current user from local storage
   const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
@@ -27,13 +23,8 @@ const Profile = () => {
         profilePicture: user.profilePicture || "default-profile.png",
       }))
     : [];
-
-
-
-
-
-
-
+  // Check if user is logged in
+  // If not, redirect to login page
 useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (!currentUser) {

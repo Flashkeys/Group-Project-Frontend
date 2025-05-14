@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Activity from "./Activity"; 
-import "../css/Components.css";
 
 const SideBar = () => {
   const [userProfile, setUserProfile] = useState(null);
@@ -35,6 +34,7 @@ const SideBar = () => {
   }
 
   return (
+
     <div className="sidebar">
       <div className="profile-inner">
         <a href="/profile">
@@ -52,8 +52,7 @@ const SideBar = () => {
         <p>Logged in as: {userProfile.username}</p>
         <a href="/edit" >Edit Profile</a>
       </div>
-
-      {/* Add Activity (formerly Notifications) */}
+      {/* Add Activity */}
       <Activity notifications={userProfile.notifications || []} />
     </div>
   );

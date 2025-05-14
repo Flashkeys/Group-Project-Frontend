@@ -1,5 +1,6 @@
 import React from "react";
 import '../css/Global.css';
+import '../css/Sidebar.css';
 import Header from '../jsx/Header.jsx';
 import Footer from "../jsx/Footer.jsx";
 import ShowAllPosts from "./ShowAllPosts.jsx";
