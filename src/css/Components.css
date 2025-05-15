@@ -201,24 +201,28 @@
 .profile-container {
   background-color: #1c1c1c;
   padding: 20px;
+  display: flex; /* Add this */
+  flex-direction: column; /* Align items vertically */
+  align-items: center; /* Center children horizontally */
 }
 
-.profile-inner {
-  max-width: 500px;
-  margin: 0 auto;
-  background-color: #2c2c2c;
-  border-radius: 8px;
-  padding: 20px;
-}
-
-.profile-inner img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin: 10px auto;
+.profile-container a {
+  text-align: center;
   display: block;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  border-radius: 8px;
+  background-color: #2c2c2c;
+  padding: 10px;
+  margin-top: 10px;
 }
+
+.profile-container img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: block; /* Ensure it's treated as a block element */
+}
+
 
 .profile-picture {
   width: 100px;
@@ -228,6 +232,14 @@
   padding: 5px;
   background-color: #1c1c1c;
   border: #2cb8d6 2px solid;
+}
+
+/* other profile */
+.other-profile {
+  background-color: #1c1c1c;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
 /* Home & Layout */

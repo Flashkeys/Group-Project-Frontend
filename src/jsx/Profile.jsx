@@ -54,13 +54,12 @@ useEffect(() => {
     <div>
       <Header /> {/* Include the Header component */}
       <div className="profile-container">
-      <div className="profile-inner">
       <h1>Profile</h1>
       
       {userProfile.profilePicture && (
         <img src={userProfile.profilePicture} alt="Profile" className="profile-picture" />
       )}
-      <a href="/edit" className="edit-profile-link">Edit Profile</a>
+
       <p>Username: {userProfile.username}</p>
       <p>Email: {userProfile.email}</p>
       <p>First Name: {userProfile.firstName}</p>
@@ -68,7 +67,7 @@ useEffect(() => {
       <p>Date of Birth: {userProfile.dateOfBirth}</p>
       <p>Followers: {userProfile.followers ? userProfile.followers.length : 0}</p>
       <p>Following: {userProfile.following ? userProfile.following.length : 0}</p>
-      </div>
+      <a href="/edit" className="edit-profile-link">Edit Profile</a>
       </div>
 
       <FilterAllPosts posts={userPosts} currentUser={currentUser} showEditDelete={true} />
