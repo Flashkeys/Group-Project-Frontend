@@ -70,18 +70,29 @@ const OtherProfiles = () => {
  return (
     <div>
       <Header />
-      <h1>Profile of {user.username}</h1>
-      <p>First Name: {user.firstName}</p>
-      <p>Last Name: {user.lastName}</p>
-      <p>Email: {user.email}</p>
-      <p>Date of Birth: {user.dateOfBirth}</p>
-      <p>Followers: {user.followers ? user.followers.length : 0}</p>
-      <p>Following: {user.following ? user.following.length : 0}</p>
-      {currentUser && currentUser.username !== user.username && (
-        <button onClick={handleFollow} className="follow-btn">
-          {isFollowing ? "Unfollow" : "Follow"}
-        </button>
-      )}
+      <div className="profile-container">
+        <div className="profile-inner">
+          <h1>Profile of {user.username}</h1>
+          {user.profilePicture && (
+            <img 
+              src={user.profilePicture} 
+              alt="Profile" 
+              className="profile-picture" 
+            />
+          )}
+          <p>First Name: {user.firstName}</p>
+          <p>Last Name: {user.lastName}</p>
+          <p>Email: {user.email}</p>
+          <p>Date of Birth: {user.dateOfBirth}</p>
+          <p>Followers: {user.followers ? user.followers.length : 0}</p>
+          <p>Following: {user.following ? user.following.length : 0}</p>
+          {currentUser && currentUser.username !== user.username && (
+            <button onClick={handleFollow} className="follow-btn">
+              {isFollowing ? "Unfollow" : "Follow"}
+            </button>
+          )}
+        </div>
+      </div>
       <FilterAllPosts posts={userPosts} currentUser={currentUser} showEditDelete={false} />
     </div>
   );
