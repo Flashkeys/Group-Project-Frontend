@@ -62,24 +62,24 @@ const Profile = () => {
     return <div>Loading...</div>;
   }
 
-  return (
+ return (
     <div>
       <Header />
       <div className="profile-container">
-        <h1>Profile</h1>
-        
-        {userProfile.profilePicture && (
-          <img src={userProfile.profilePicture} alt="Profile" className="profile-picture" />
-        )}
-
-        <p>Username: {userProfile.username}</p>
-        <p>Email: {userProfile.email}</p>
-        <p>First Name: {userProfile.firstName}</p>
-        <p>Last Name: {userProfile.lastName}</p>
-        <p>Date of Birth: {userProfile.dateOfBirth}</p>
-        <p>Followers: {userProfile.followers ? userProfile.followers.length : 0}</p>
-        <p>Following: {userProfile.following ? userProfile.following.length : 0}</p>
-        <a href="/edit" className="edit-profile-link">Edit Profile</a>
+        <div className="profile-inner">
+          <h1>Profile</h1>
+          {userProfile.profilePicture && (
+            <img src={userProfile.profilePicture} alt="Profile" className="profile-picture" />
+          )}
+          <p>Username: {userProfile.username}</p>
+          <p>Email: {userProfile.email}</p>
+          <p>First Name: {userProfile.firstName}</p>
+          <p>Last Name: {userProfile.lastName}</p>
+          <p>Date of Birth: {userProfile.dateOfBirth}</p>
+          <p>Followers: {userProfile.followers ? userProfile.followers.length : 0}</p>
+          <p>Following: {userProfile.following ? userProfile.following.length : 0}</p>
+          <a href="/edit" className="edit-profile-link">Edit Profile</a>
+        </div>
       </div>
 
       <FilterAllPosts 
@@ -87,10 +87,9 @@ const Profile = () => {
         currentUser={currentUser} 
         showEditDelete={true}
         onPostUpdate={handlePostUpdate}
-        isUserProfile={true}
       />
     </div>
   );
-}
+};
 
 export default Profile;
