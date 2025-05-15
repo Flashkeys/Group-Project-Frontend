@@ -42,7 +42,6 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
   color: #a0a0a0;
 }
 
@@ -123,5 +122,17 @@ textarea:focus {
   border-color: #44e0ff;
   background-color: #666666;
   outline: none;
+}
+
+.error {
+  color: #ff6b6b;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.success {
+  color: #44e0ff;
+  margin-top: 10px;
+  text-align: center;
 }
 
