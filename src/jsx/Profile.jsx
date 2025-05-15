@@ -16,13 +16,15 @@ const Profile = () => {
     const user = existingUsers.find(u => u.username === currentUser?.username);
     if (!user || !user.posts) return [];
     
-    return user.posts.map((post, postIndex) => ({
-      ...post,
-      username: user.username,
-      postIndex,
-      userIndex: existingUsers.findIndex(u => u.username === user.username),
-      profilePicture: user.profilePicture || "default-profile.png",
-    }));
+    return user.posts
+      .map((post, postIndex) => ({
+        ...post,
+        username: user.username,
+        postIndex,
+        userIndex: existingUsers.findIndex(u => u.username === user.username),
+        profilePicture: user.profilePicture || "default-profile.png",
+      }))
+      .sort((a, b) => new Date(b.datePosted) - new Date(a.datePosted)); // Sort by newest first
   };
 
   // Initial load and auth check
@@ -43,13 +45,15 @@ const Profile = () => {
     const user = updatedUsers.find(u => u.username === currentUser?.username);
     if (user) {
       setUserPosts(
-        user.posts.map((post, postIndex) => ({
-          ...post,
-          username: user.username,
-          postIndex,
-          userIndex: updatedUsers.findIndex(u => u.username === user.username),
-          profilePicture: user.profilePicture || "default-profile.png",
-        }))
+        user.posts
+          .map((post, postIndex) => ({
+            ...post,
+            username: user.username,
+            postIndex,
+            userIndex: updatedUsers.findIndex(u => u.username === user.username),
+            profilePicture: user.profilePicture || "default-profile.png",
+          }))
+          .sort((a, b) => new Date(b.datePosted) - new Date(a.datePosted)) // Sort by newest first
       );
     }
   };
@@ -58,33 +62,24 @@ const Profile = () => {
     return <div>Loading...</div>;
   }
 
-  if (!userProfile) {
-    return (
-      <div>
-        <h1>Profile</h1>
-        <p>Loading profile data...</p>
-      </div>
-    );
-  }
-
   return (
     <div>
-      <Header /> {/* Include the Header component */}
+      <Header />
       <div className="profile-container">
-      <h1>Profile</h1>
-      
-      {userProfile.profilePicture && (
-        <img src={userProfile.profilePicture} alt="Profile" className="profile-picture" />
-      )}
+        <h1>Profile</h1>
+        
+        {userProfile.profilePicture && (
+          <img src={userProfile.profilePicture} alt="Profile" className="profile-picture" />
+        )}
 
-      <p>Username: {userProfile.username}</p>
-      <p>Email: {userProfile.email}</p>
-      <p>First Name: {userProfile.firstName}</p>
-      <p>Last Name: {userProfile.lastName}</p>
-      <p>Date of Birth: {userProfile.dateOfBirth}</p>
-      <p>Followers: {userProfile.followers ? userProfile.followers.length : 0}</p>
-      <p>Following: {userProfile.following ? userProfile.following.length : 0}</p>
-      <a href="/edit" className="edit-profile-link">Edit Profile</a>
+        <p>Username: {userProfile.username}</p>
+        <p>Email: {userProfile.email}</p>
+        <p>First Name: {userProfile.firstName}</p>
+        <p>Last Name: {userProfile.lastName}</p>
+        <p>Date of Birth: {userProfile.dateOfBirth}</p>
+        <p>Followers: {userProfile.followers ? userProfile.followers.length : 0}</p>
+        <p>Following: {userProfile.following ? userProfile.following.length : 0}</p>
+        <a href="/edit" className="edit-profile-link">Edit Profile</a>
       </div>
 
       <FilterAllPosts 
@@ -94,7 +89,6 @@ const Profile = () => {
         onPostUpdate={handlePostUpdate}
         isUserProfile={true}
       />
-
     </div>
   );
 }
