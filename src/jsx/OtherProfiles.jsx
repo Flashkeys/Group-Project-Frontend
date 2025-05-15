@@ -61,6 +61,7 @@ const OtherProfiles = () => {
     localStorage.setItem("users", JSON.stringify(usersCopy));
     setIsFollowing(!isFollowing);
     setRefresh(r => !r); // Trigger re-read of users
+    window.location.reload(); // Reload the page to reflect changes
   };
 
   if (!user) {
