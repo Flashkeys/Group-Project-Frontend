@@ -12,8 +12,6 @@ import NotFound from './jsx/NotFound.jsx';
 import OtherProfiles from './jsx/OtherProfiles.jsx';
 import Messages from './jsx/Messages.jsx';
 
-// Save the users data to local storage
-
 const Index = () => {
   const currentUser = localStorage.getItem("currentUser");
   console.log("Logged in as:", currentUser);
