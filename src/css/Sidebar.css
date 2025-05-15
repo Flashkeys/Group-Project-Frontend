@@ -20,6 +20,7 @@
   background-color: #3c3c3c;
   padding: 20px;
   border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(28, 28, 28, 0.5);
 }
 
 .sidebar-pic {
