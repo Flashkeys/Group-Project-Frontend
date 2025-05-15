@@ -6,34 +6,55 @@ import FilterAllPosts from "./FilterAllPosts";
 const OtherProfiles = () => {
   const { username } = useParams();
   const [refresh, setRefresh] = useState(false);
-
-  const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-
-  // Always read users and currentUser from localStorage on each render (like ShowAllPosts)
-  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const [userPosts, setUserPosts] = useState([]);
+  const [existingUsers, setExistingUsers] = useState(
+    JSON.parse(localStorage.getItem("users")) || []
+  );
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  //const user = users.find(user => user.username === username);
-
-
   const user = existingUsers.find(user => user.username === username);
-  const userPosts = user
-    ? user.posts.map((post, postIndex) => ({
-        ...post,
-        username: user.username,
-        postIndex,
-        userIndex: existingUsers.findIndex(u => u.username === user.username),
-        profilePicture: user.profilePicture || "default-profile.png",
-      }))
-    : [];
-
-
   const [isFollowing, setIsFollowing] = useState(false);
 
+  // Function to get and format user's posts
+  const getUserPosts = () => {
+    if (!user || !user.posts) return [];
+    return user.posts.map((post, postIndex) => ({
+      ...post,
+      username: user.username,
+      postIndex,
+      userIndex: existingUsers.findIndex(u => u.username === user.username),
+      profilePicture: user.profilePicture || "default-profile.png",
+    }));
+  };
+
+  // Update posts when component mounts or when user/refresh changes
+  useEffect(() => {
+    setUserPosts(getUserPosts());
+  }, [username, refresh, existingUsers]);
+
+  // Update following status
   useEffect(() => {
     if (!currentUser || !user) return;
-    const loggedInUser = users.find(u => u.username === currentUser.username);
+    const loggedInUser = existingUsers.find(u => u.username === currentUser.username);
     setIsFollowing(loggedInUser?.following?.includes(user.username));
-  }, [currentUser, user, users, refresh]);
+  }, [currentUser, user, existingUsers]);
+
+  // Handle post updates (likes, comments, etc.)
+  const handlePostUpdate = () => {
+    const updatedUsers = JSON.parse(localStorage.getItem("users")) || [];
+    setExistingUsers(updatedUsers);
+    const updatedUser = updatedUsers.find(u => u.username === username);
+    if (updatedUser) {
+      setUserPosts(
+        updatedUser.posts.map((post, postIndex) => ({
+          ...post,
+          username: updatedUser.username,
+          postIndex,
+          userIndex: updatedUsers.findIndex(u => u.username === updatedUser.username),
+          profilePicture: updatedUser.profilePicture || "default-profile.png",
+        }))
+      );
+    }
+  };
 
   const handleFollow = () => {
     if (!currentUser || !user) return;
@@ -70,30 +91,27 @@ const OtherProfiles = () => {
  return (
     <div>
       <Header />
-      <div className="profile-container">
-        <div className="profile-inner">
-          <h1>Profile of {user.username}</h1>
-          {user.profilePicture && (
-            <img 
-              src={user.profilePicture} 
-              alt="Profile" 
-              className="profile-picture" 
-            />
-          )}
-          <p>First Name: {user.firstName}</p>
-          <p>Last Name: {user.lastName}</p>
-          <p>Email: {user.email}</p>
-          <p>Date of Birth: {user.dateOfBirth}</p>
-          <p>Followers: {user.followers ? user.followers.length : 0}</p>
-          <p>Following: {user.following ? user.following.length : 0}</p>
-          {currentUser && currentUser.username !== user.username && (
-            <button onClick={handleFollow} className="follow-btn">
-              {isFollowing ? "Unfollow" : "Follow"}
-            </button>
-          )}
-        </div>
+      <div className="other-profile">
+        <h1>Profile of {user.username}</h1>
+        <p>First Name: {user.firstName}</p>
+        <p>Last Name: {user.lastName}</p>
+        <p>Email: {user.email}</p>
+        <p>Date of Birth: {user.dateOfBirth}</p>
+        <p>Followers: {user.followers ? user.followers.length : 0}</p>
+        <p>Following: {user.following ? user.following.length : 0}</p>
+        {currentUser && currentUser.username !== user.username && (
+          <button onClick={handleFollow} className="follow-btn">
+            {isFollowing ? "Unfollow" : "Follow"}
+          </button>
+        )}
       </div>
-      <FilterAllPosts posts={userPosts} currentUser={currentUser} showEditDelete={false} />
+      <FilterAllPosts 
+        posts={userPosts} 
+        currentUser={currentUser} 
+        showEditDelete={false}
+        onPostUpdate={handlePostUpdate}
+        isUserProfile={true}
+      />
     </div>
   );
 };
