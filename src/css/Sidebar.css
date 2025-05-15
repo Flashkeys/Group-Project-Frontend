@@ -77,6 +77,7 @@
   border-radius: 8px;
   margin-bottom: 20px;
   max-width: 300px;
+  box-shadow: 0 2px 4px rgba(28, 28, 28, 0.5);
 }
 
 /* Remove on small screens */
