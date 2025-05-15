@@ -8,6 +8,14 @@
   min-height: 100vh;
 }
 
+/* Main Post Content */
+.post-content {
+  flex: 1;
+  background-color: #1c1c1c;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
 .post-header {
   width: 100%;
   font-size: 2.5rem;
@@ -87,7 +95,6 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
 .post-card img:hover {
   transform: scale(1.02);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
@@ -156,6 +163,7 @@
   justify-content: row;
   align-items: center;
 }
+
 .liked-by-text span{
   margin-top: 15px;
 }
@@ -237,14 +245,6 @@
   width: 100%;
 }
 
-/* Main Post Content */
-.post-content {
-  flex: 1;
-  background-color: #1c1c1c;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
 /* Footer */
 .footer {
   padding: 20px;
@@ -252,6 +252,44 @@
   text-align: center;
   font-size: 1.2rem;
   margin-top: auto;
+}
+
+.edit-profile-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.edit-profile-input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #222;
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.edit-profile-input:read-only {
+  background: #333;
+  color: #aaa;
+}
+
+.edit-profile-button {
+  background: #44e0ff;
+  color: #222;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.edit-profile-button:hover {
+  background: #2cb8d6;
 }
 
 /* Responsive Styles */
@@ -319,54 +357,4 @@
     width: 100%;
     height: auto;
   }
-}
-
-.edit-profile-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.edit-profile-input {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #444;
-  background: #222;
-  color: #fff;
-  margin-bottom: 10px;
-  font-size: 1rem;
-}
-
-.edit-profile-input:read-only {
-  background: #333;
-  color: #aaa;
-}
-
-.edit-profile-button {
-  background: #44e0ff;
-  color: #222;
-  border: none;
-  border-radius: 6px;
-  padding: 12px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background 0.2s;
-}
-
-.edit-profile-button:hover {
-  background: #2cb8d6;
-}
-
-.error {
-  color: #ff6b6b;
-  margin-top: 10px;
-  text-align: center;
-}
-
-.success {
-  color: #44e0ff;
-  margin-top: 10px;
-  text-align: center;
 }
