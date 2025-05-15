@@ -178,7 +178,6 @@
 
 .create-post-container {
   background-color: #1c1c1c;
-  padding-top: 100px;
   width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -192,7 +191,6 @@
 
 /* Profile Layout */
 .profile-container {
-  margin-top: 100px;
   background-color: #1c1c1c;
   padding: 20px;
 }

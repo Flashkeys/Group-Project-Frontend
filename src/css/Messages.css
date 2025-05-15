@@ -1,5 +1,4 @@
 .messages-container {
-  margin-top: 100px;
   display: flex;
   height: calc(100vh - 70px);
   background: #181818;
