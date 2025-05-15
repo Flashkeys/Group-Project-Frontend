@@ -70,6 +70,7 @@ const OtherProfiles = () => {
   return (
     <div>
       <Header />
+      <div className="other-profile">
       <h1>Profile of {user.username}</h1>
       <p>First Name: {user.firstName}</p>
       <p>Last Name: {user.lastName}</p>
@@ -82,6 +83,7 @@ const OtherProfiles = () => {
           {isFollowing ? "Unfollow" : "Follow"}
         </button>
       )}
+      </div>
       <FilterAllPosts posts={userPosts} currentUser={currentUser} showEditDelete={false} />
     </div>
   );

@@ -68,7 +68,6 @@ const EditProfile = () => {
     <div>
       <Header />
       <div className="profile-container">
-        <div className="profile-inner">
           <h1>Edit Profile</h1>
           <form onSubmit={handleSubmit} className="edit-profile-form">
             <div style={{ textAlign: "center" }}>
@@ -98,7 +97,6 @@ const EditProfile = () => {
           {success && <p className="success">{success}</p>}
         </div>
       </div>
-    </div>
   );
 };
 
