@@ -10,7 +10,6 @@ import SideBar from "./SideBar.jsx";
 import FollowedPosts from "./FollowedPosts.jsx";
 const Home = () => {
 
-  // delete localStorage
   //localStorage.removeItem("users");
   //localStorage.removeItem("currentUser");
 

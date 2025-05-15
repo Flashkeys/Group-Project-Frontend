@@ -14,8 +14,6 @@ const OtherProfiles = () => {
   // Always read users and currentUser from localStorage on each render (like ShowAllPosts)
   const users = JSON.parse(localStorage.getItem("users")) || [];
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  //const user = users.find(user => user.username === username);
-
 
   const user = existingUsers.find(user => user.username === username);
   const getUserPosts = () => {
@@ -28,7 +26,6 @@ const OtherProfiles = () => {
       profilePicture: user.profilePicture || "default-profile.png",
     }));
   };
-
 
   const [isFollowing, setIsFollowing] = useState(false);
 
@@ -44,7 +41,6 @@ const OtherProfiles = () => {
     const updatedUsers = JSON.parse(localStorage.getItem("users")) || [];
     setExistingUsers(updatedUsers);
   };
-
 
   const handleFollow = () => {
     if (!currentUser || !user) return;
@@ -109,13 +105,7 @@ const OtherProfiles = () => {
         </div>
       </div>
 
-      <FilterAllPosts
-        posts={userPosts}
-        currentUser={currentUser}
-        showEditDelete={false}
-        onPostUpdate={handlePostUpdate}
-        isUserProfile={true}
-      />
+      <FilterAllPosts posts={userPosts} currentUser={currentUser} showEditDelete={false} onPostUpdate={handlePostUpdate} isUserProfile={true} />
     </div>
   );
 };

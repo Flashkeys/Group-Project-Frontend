@@ -15,12 +15,6 @@ const FilterAllPosts = ({ posts, currentUser, showEditDelete, onPostUpdate, isUs
     JSON.parse(localStorage.getItem("users")) || []
   );
 
-
-  //const existingUsers = JSON.parse(localStorage.getItem("users"));
-
-
-
-
   // Update localPosts when posts prop changes
   useEffect(() => {
     setLocalPosts(posts);
@@ -48,11 +42,7 @@ const FilterAllPosts = ({ posts, currentUser, showEditDelete, onPostUpdate, isUs
       setLocalPosts(updatedPosts);
     }
   };
-
-
-
-
-
+  
   const handleLike = (userIndex, postIndex) => {
     if (!currentUser || !currentUser.isLoggedIn) {
       alert("You must be logged in to like a post.");
