@@ -29,6 +29,7 @@
   padding: 5px;
   background-color: #1c1c1c;
   border: #2cb8d6 2px solid;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .sidebar-profile a {
