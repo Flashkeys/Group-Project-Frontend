@@ -304,6 +304,16 @@
   background: #2cb8d6;
 }
 
+.comment-card {
+  background-color: #1c1c1c;
+  padding: 0px;
+  border-radius: 8px;
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(28, 28, 28, 0.5);
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
 

@@ -270,7 +270,7 @@ const FilterAllPosts = ({ posts, currentUser, showEditDelete, onPostUpdate, isUs
                     const commentUser = existingUsers.find(user => user.username === comment.username);
 
                     return (
-                      <div key={commentIndex} className="post-card">
+                      <div key={commentIndex} className="comment-card">
                         <div className="post-header">
                           <img src={commentUser?.profilePicture || "default-profile.png"} alt="Profile" className="profile-picture" />
                           <p>
