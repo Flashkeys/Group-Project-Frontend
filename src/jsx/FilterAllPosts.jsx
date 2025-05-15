@@ -5,7 +5,7 @@ import likeIconFull from '../img/like-icon-full.png';
 import deleteIcon from '../img/delete-icon.png';
 import editIcon from '../img/edit-icon.png';
 
-const FilterAllPosts = ({ posts, currentUser, showEditDelete, onPostUpdate, isLikedPostsPage }) => {
+const FilterAllPosts = ({ posts, currentUser, showEditDelete, onPostUpdate, isUserProfile, isLikedPostsPage }) => {
   const [localPosts, setLocalPosts] = useState(posts);
   const [editingPost, setEditingPost] = useState(null);
   const [editText, setEditText] = useState("");
@@ -26,16 +26,15 @@ const FilterAllPosts = ({ posts, currentUser, showEditDelete, onPostUpdate, isLi
     setLocalPosts(posts);
   }, [posts]);
 
-  // Function to update both localStorage and state
   const updateUsers = (updatedUsers) => {
     localStorage.setItem("users", JSON.stringify(updatedUsers));
     setExistingUsers(updatedUsers);
 
-    // If we're on LikedPosts page, call the parent's update function
-    if (isLikedPostsPage && onPostUpdate) {
+    // If we're on a profile page or liked posts page, trigger the parent update
+    if ((isUserProfile || isLikedPostsPage) && onPostUpdate) {
       onPostUpdate();
     } else {
-      // Otherwise, update local state
+      // Otherwise, update local state for all posts view
       const updatedPosts = updatedUsers.flatMap((user, userIndex) =>
         user.posts.map((post, postIndex) => ({
           ...post,
