@@ -5,7 +5,7 @@ import likeIconFull from '../img/like-icon-full.png';
 import deleteIcon from '../img/delete-icon.png';
 import editIcon from '../img/edit-icon.png';
 
-const FilterAllPosts = ({ posts, currentUser, showEditDelete }) => {
+const FilterAllPosts = ({ posts, currentUser, showEditDelete, onPostUpdate, isLikedPostsPage }) => {
   const [localPosts, setLocalPosts] = useState(posts);
   const [editingPost, setEditingPost] = useState(null);
   const [editText, setEditText] = useState("");
@@ -31,18 +31,23 @@ const FilterAllPosts = ({ posts, currentUser, showEditDelete }) => {
     localStorage.setItem("users", JSON.stringify(updatedUsers));
     setExistingUsers(updatedUsers);
 
-    // Update localPosts to reflect changes
-    const updatedPosts = updatedUsers.flatMap((user, userIndex) =>
-      user.posts.map((post, postIndex) => ({
-        ...post,
-        username: user.username,
-        userIndex,
-        postIndex,
-        profilePicture: user.profilePicture || "default-profile.png",
-      }))
-    ).sort((a, b) => new Date(b.datePosted) - new Date(a.datePosted));
+    // If we're on LikedPosts page, call the parent's update function
+    if (isLikedPostsPage && onPostUpdate) {
+      onPostUpdate();
+    } else {
+      // Otherwise, update local state
+      const updatedPosts = updatedUsers.flatMap((user, userIndex) =>
+        user.posts.map((post, postIndex) => ({
+          ...post,
+          username: user.username,
+          userIndex,
+          postIndex,
+          profilePicture: user.profilePicture || "default-profile.png",
+        }))
+      ).sort((a, b) => new Date(b.datePosted) - new Date(a.datePosted));
 
-    setLocalPosts(updatedPosts);
+      setLocalPosts(updatedPosts);
+    }
   };
 
 
@@ -57,6 +62,10 @@ const FilterAllPosts = ({ posts, currentUser, showEditDelete }) => {
 
     const updatedUsers = [...existingUsers];
     const post = updatedUsers[userIndex].posts[postIndex];
+
+    if (!post.likedBy) {
+      post.likedBy = [];
+    }
 
     if (!post.likedBy.includes(currentUser.username)) {
       post.likes += 1;
@@ -162,21 +171,21 @@ const FilterAllPosts = ({ posts, currentUser, showEditDelete }) => {
   };
 
   const saveEditComment = (userIndex, postIndex, commentIndex) => {
-  if (!editingPost) return;
+    if (!editingPost) return;
 
-  const updatedUsers = [...existingUsers];
-  updatedUsers[userIndex].posts[postIndex].comments[commentIndex].text = editText;
+    const updatedUsers = [...existingUsers];
+    updatedUsers[userIndex].posts[postIndex].comments[commentIndex].text = editText;
 
-  updateUsers(updatedUsers); // Use updateUsers instead of direct localStorage update
-  setEditingPost(null); // Exit edit mode
-};
+    updateUsers(updatedUsers); // Use updateUsers instead of direct localStorage update
+    setEditingPost(null); // Exit edit mode
+  };
 
   const handleDeleteComment = (userIndex, postIndex, commentIndex) => {
-  const updatedUsers = [...existingUsers];
-  updatedUsers[userIndex].posts[postIndex].comments.splice(commentIndex, 1);
+    const updatedUsers = [...existingUsers];
+    updatedUsers[userIndex].posts[postIndex].comments.splice(commentIndex, 1);
 
-  updateUsers(updatedUsers); // Use updateUsers instead of direct localStorage update
-};
+    updateUsers(updatedUsers); // Use updateUsers instead of direct localStorage update
+  };
 
   return (
     <div className="posts-container">
@@ -218,7 +227,12 @@ const FilterAllPosts = ({ posts, currentUser, showEditDelete }) => {
 
             <div className="post-actions">
               <div className="post-likes">
-                <img src={post.likedBy.includes(currentUser?.username) ? likeIconFull : likeIcon} className="post-like-button" onClick={() => handleLike(post.userIndex, post.postIndex)} alt="Like Button" />
+                <img
+                  src={post.likedBy?.includes(currentUser?.username) ? likeIconFull : likeIcon}
+                  className="post-like-button"
+                  onClick={() => handleLike(post.userIndex, post.postIndex)}
+                  alt="Like Button"
+                />
                 <p>{post.likes}</p>
               </div>
             </div>
