@@ -20,6 +20,7 @@ const Profile = () => {
         ...post,
         username: user.username,
         postIndex,
+        userIndex: existingUsers.findIndex(u => u.username === user.username),
         profilePicture: user.profilePicture || "default-profile.png",
       }))
     : [];

@@ -15,21 +15,16 @@ const OtherProfiles = () => {
   //const user = users.find(user => user.username === username);
 
 
-
-
-
   const user = existingUsers.find(user => user.username === username);
   const userPosts = user
     ? user.posts.map((post, postIndex) => ({
         ...post,
         username: user.username,
         postIndex,
+        userIndex: existingUsers.findIndex(u => u.username === user.username),
         profilePicture: user.profilePicture || "default-profile.png",
       }))
     : [];
-
-
-
 
 
   const [isFollowing, setIsFollowing] = useState(false);
