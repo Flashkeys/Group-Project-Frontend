@@ -10,11 +10,14 @@ const OtherProfiles = () => {
   const [existingUsers, setExistingUsers] = useState(
     JSON.parse(localStorage.getItem("users")) || []
   );
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  const user = existingUsers.find(user => user.username === username);
-  const [isFollowing, setIsFollowing] = useState(false);
 
-  // Function to get and format user's posts
+  // Always read users and currentUser from localStorage on each render (like ShowAllPosts)
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  //const user = users.find(user => user.username === username);
+
+
+  const user = existingUsers.find(user => user.username === username);
   const getUserPosts = () => {
     if (!user || !user.posts) return [];
     return user.posts.map((post, postIndex) => ({
@@ -26,35 +29,22 @@ const OtherProfiles = () => {
     }));
   };
 
-  // Update posts when component mounts or when user/refresh changes
-  useEffect(() => {
-    setUserPosts(getUserPosts());
-  }, [username, refresh, existingUsers]);
 
-  // Update following status
+  const [isFollowing, setIsFollowing] = useState(false);
+
   useEffect(() => {
     if (!currentUser || !user) return;
     const loggedInUser = existingUsers.find(u => u.username === currentUser.username);
     setIsFollowing(loggedInUser?.following?.includes(user.username));
+    setUserPosts(getUserPosts());
   }, [currentUser, user, existingUsers]);
 
-  // Handle post updates (likes, comments, etc.)
+
   const handlePostUpdate = () => {
     const updatedUsers = JSON.parse(localStorage.getItem("users")) || [];
     setExistingUsers(updatedUsers);
-    const updatedUser = updatedUsers.find(u => u.username === username);
-    if (updatedUser) {
-      setUserPosts(
-        updatedUser.posts.map((post, postIndex) => ({
-          ...post,
-          username: updatedUser.username,
-          postIndex,
-          userIndex: updatedUsers.findIndex(u => u.username === updatedUser.username),
-          profilePicture: updatedUser.profilePicture || "default-profile.png",
-        }))
-      );
-    }
   };
+
 
   const handleFollow = () => {
     if (!currentUser || !user) return;
@@ -82,32 +72,46 @@ const OtherProfiles = () => {
     localStorage.setItem("users", JSON.stringify(usersCopy));
     setIsFollowing(!isFollowing);
     setRefresh(r => !r); // Trigger re-read of users
+    window.location.reload(); // Reload the page to reflect changes
   };
 
   if (!user) {
     return <p>User not found.</p>;
   }
 
- return (
+  return (
     <div>
       <Header />
-      <div className="other-profile">
-        <h1>Profile of {user.username}</h1>
-        <p>First Name: {user.firstName}</p>
-        <p>Last Name: {user.lastName}</p>
-        <p>Email: {user.email}</p>
-        <p>Date of Birth: {user.dateOfBirth}</p>
-        <p>Followers: {user.followers ? user.followers.length : 0}</p>
-        <p>Following: {user.following ? user.following.length : 0}</p>
-        {currentUser && currentUser.username !== user.username && (
-          <button onClick={handleFollow} className="follow-btn">
-            {isFollowing ? "Unfollow" : "Follow"}
-          </button>
-        )}
+      <div className="profile-container">
+        <div className="profile-inner">
+          <h1>Profile of {user.username}</h1>
+
+          {/* Add profile picture with fallback to default */}
+          <img
+            src={user.profilePicture || "default-profile.png"}
+            alt="Profile"
+            className="profile-picture"
+          />
+
+          <p>Username: {user.username}</p>
+          <p>First Name: {user.firstName}</p>
+          <p>Last Name: {user.lastName}</p>
+          <p>Email: {user.email}</p>
+          <p>Date of Birth: {user.dateOfBirth}</p>
+          <p>Followers: {user.followers ? user.followers.length : 0}</p>
+          <p>Following: {user.following ? user.following.length : 0}</p>
+
+          {currentUser && currentUser.username !== user.username && (
+            <button onClick={handleFollow} className="follow-btn">
+              {isFollowing ? "Unfollow" : "Follow"}
+            </button>
+          )}
+        </div>
       </div>
-      <FilterAllPosts 
-        posts={userPosts} 
-        currentUser={currentUser} 
+
+      <FilterAllPosts
+        posts={userPosts}
+        currentUser={currentUser}
         showEditDelete={false}
         onPostUpdate={handlePostUpdate}
         isUserProfile={true}
@@ -115,5 +119,4 @@ const OtherProfiles = () => {
     </div>
   );
 };
-
 export default OtherProfiles;
