@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import likeIcon from '../img/like-icon.png';
 import likeIconFull from '../img/like-icon-full.png';
@@ -6,13 +6,47 @@ import deleteIcon from '../img/delete-icon.png';
 import editIcon from '../img/edit-icon.png';
 
 const FilterAllPosts = ({ posts, currentUser, showEditDelete }) => {
+  const [localPosts, setLocalPosts] = useState(posts);
   const [editingPost, setEditingPost] = useState(null);
   const [editText, setEditText] = useState("");
   const [visibleComments, setVisibleComments] = useState({});
   const [hoveredComment, setHoveredComment] = useState(null);
+  const [existingUsers, setExistingUsers] = useState(
+    JSON.parse(localStorage.getItem("users")) || []
+  );
 
 
-  const existingUsers = JSON.parse(localStorage.getItem("users"));
+  //const existingUsers = JSON.parse(localStorage.getItem("users"));
+
+
+
+
+  // Update localPosts when posts prop changes
+  useEffect(() => {
+    setLocalPosts(posts);
+  }, [posts]);
+
+  // Function to update both localStorage and state
+  const updateUsers = (updatedUsers) => {
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    setExistingUsers(updatedUsers);
+
+    // Update localPosts to reflect changes
+    const updatedPosts = updatedUsers.flatMap((user, userIndex) =>
+      user.posts.map((post, postIndex) => ({
+        ...post,
+        username: user.username,
+        userIndex,
+        postIndex,
+        profilePicture: user.profilePicture || "default-profile.png",
+      }))
+    ).sort((a, b) => new Date(b.datePosted) - new Date(a.datePosted));
+
+    setLocalPosts(updatedPosts);
+  };
+
+
+
 
 
   const handleLike = (userIndex, postIndex) => {
@@ -21,11 +55,9 @@ const FilterAllPosts = ({ posts, currentUser, showEditDelete }) => {
       return;
     }
 
-    // Update the post in the users array
     const updatedUsers = [...existingUsers];
     const post = updatedUsers[userIndex].posts[postIndex];
 
-    // Toggle like: Add or remove the current user's like
     if (!post.likedBy.includes(currentUser.username)) {
       post.likes += 1;
       post.likedBy.push(currentUser.username);
@@ -34,9 +66,7 @@ const FilterAllPosts = ({ posts, currentUser, showEditDelete }) => {
       post.likedBy = post.likedBy.filter(username => username !== currentUser.username);
     }
 
-    // Save the updated users array back to localStorage
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-    window.location.reload(); // Reload to reflect the changes
+    updateUsers(updatedUsers);
   };
 
   const handleEdit = (userIndex, postIndex, text) => {
@@ -51,27 +81,14 @@ const FilterAllPosts = ({ posts, currentUser, showEditDelete }) => {
     const updatedUsers = [...existingUsers];
     updatedUsers[userIndex].posts[postIndex].text = editText;
 
-    // Save the updated users array back to localStorage
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-    // Clear the editing state
+    updateUsers(updatedUsers);
     setEditingPost(null);
-    window.scrollTo({
-      top: 0, // Scroll to the top
-    });
-    window.location.reload();
   };
 
   const handleDelete = (userIndex, postIndex) => {
     const updatedUsers = [...existingUsers];
-    // Remove the post from the user's posts array
     updatedUsers[userIndex].posts.splice(postIndex, 1);
-
-    // Save the updated users array back to localStorage
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-    window.scrollTo({
-      top: 0, // Scroll to the top
-    });
-    window.location.reload();
+    updateUsers(updatedUsers);
   };
 
   // Toggle comments visibility
@@ -88,16 +105,13 @@ const FilterAllPosts = ({ posts, currentUser, showEditDelete }) => {
       return;
     }
 
-    // Fetch the updated users from localStorage
-    const updatedUsers = JSON.parse(localStorage.getItem("users")) || [];
+    const updatedUsers = [...existingUsers];
     const comment = updatedUsers[userIndex].posts[postIndex].comments[commentIndex];
 
-    // Ensure the likedBy array exists
     if (!comment.likedBy) {
       comment.likedBy = [];
     }
 
-    // Toggle like
     if (!comment.likedBy.includes(currentUser.username)) {
       comment.likes = (comment.likes || 0) + 1;
       comment.likedBy.push(currentUser.username);
@@ -106,15 +120,7 @@ const FilterAllPosts = ({ posts, currentUser, showEditDelete }) => {
       comment.likedBy = comment.likedBy.filter(username => username !== currentUser.username);
     }
 
-    // Save the updated users array back to localStorage
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-
-    // Update the UI by reloading the component state
-    setVisibleComments((prev) => ({ ...prev })); // Trigger a re-render
-    window.scrollTo({
-      top: 0, // Scroll to the top
-    });
-    window.location.reload();
+    updateUsers(updatedUsers);
   };
 
   // add a comment to a post
@@ -132,6 +138,10 @@ const FilterAllPosts = ({ posts, currentUser, showEditDelete }) => {
     const updatedUsers = [...existingUsers];
     const post = updatedUsers[userIndex].posts[postIndex];
 
+    if (!post.comments) {
+      post.comments = [];
+    }
+
     const newComment = {
       username: currentUser.username,
       text: editText.trim(),
@@ -140,16 +150,9 @@ const FilterAllPosts = ({ posts, currentUser, showEditDelete }) => {
       likedBy: [],
     };
 
-    if (!post.comments) {
-      post.comments = [];
-    }
-
     post.comments.push(newComment);
-
-    // Save the updated users array back to localStorage
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-    setEditText(""); // Clear the textarea
-    window.location.reload(); // Reload to reflect the changes
+    updateUsers(updatedUsers);
+    setEditText("");
   };
 
   // edit a comment
@@ -159,33 +162,26 @@ const FilterAllPosts = ({ posts, currentUser, showEditDelete }) => {
   };
 
   const saveEditComment = (userIndex, postIndex, commentIndex) => {
-    if (!editingPost) return;
+  if (!editingPost) return;
 
-    const updatedUsers = [...existingUsers];
-    updatedUsers[userIndex].posts[postIndex].comments[commentIndex].text = editText;
+  const updatedUsers = [...existingUsers];
+  updatedUsers[userIndex].posts[postIndex].comments[commentIndex].text = editText;
 
-    // Save the updated users array back to localStorage
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-    setEditingPost(null); // Exit edit mode
-    window.scrollTo({
-      top: 0, // Scroll to the top
-    });
-    window.location.reload(); // Reload to reflect the changes
-  };
+  updateUsers(updatedUsers); // Use updateUsers instead of direct localStorage update
+  setEditingPost(null); // Exit edit mode
+};
 
   const handleDeleteComment = (userIndex, postIndex, commentIndex) => {
-    const updatedUsers = [...existingUsers];
-    updatedUsers[userIndex].posts[postIndex].comments.splice(commentIndex, 1);
+  const updatedUsers = [...existingUsers];
+  updatedUsers[userIndex].posts[postIndex].comments.splice(commentIndex, 1);
 
-    // Save the updated users array back to localStorage
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-    window.location.reload(); // Reload to reflect the changes
-  };
+  updateUsers(updatedUsers); // Use updateUsers instead of direct localStorage update
+};
 
   return (
     <div className="posts-container">
       {posts.length > 0 ? (
-        posts.map((post, index) => (
+        localPosts.map((post, index) => (
           <div key={index} className="post-card">
             <div className="post-header">
               <img src={post.profilePicture} alt="Profile" className="profile-picture" />
