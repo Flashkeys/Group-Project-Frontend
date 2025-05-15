@@ -16,15 +16,13 @@ const Profile = () => {
     const user = existingUsers.find(u => u.username === currentUser?.username);
     if (!user || !user.posts) return [];
     
-    return user.posts
-      .map((post, postIndex) => ({
-        ...post,
-        username: user.username,
-        postIndex,
-        userIndex: existingUsers.findIndex(u => u.username === user.username),
-        profilePicture: user.profilePicture || "default-profile.png",
-      }))
-      .sort((a, b) => new Date(b.datePosted) - new Date(a.datePosted)); // Sort by newest first
+    return user.posts.map((post, postIndex) => ({
+      ...post,
+      username: user.username,
+      postIndex,
+      userIndex: existingUsers.findIndex(u => u.username === user.username),
+      profilePicture: user.profilePicture || "default-profile.png",
+    })).sort((a, b) => new Date(b.datePosted) - new Date(a.datePosted));
   };
 
   // Initial load and auth check
@@ -42,20 +40,8 @@ const Profile = () => {
   const handlePostUpdate = () => {
     const updatedUsers = JSON.parse(localStorage.getItem("users")) || [];
     setExistingUsers(updatedUsers);
-    const user = updatedUsers.find(u => u.username === currentUser?.username);
-    if (user) {
-      setUserPosts(
-        user.posts
-          .map((post, postIndex) => ({
-            ...post,
-            username: user.username,
-            postIndex,
-            userIndex: updatedUsers.findIndex(u => u.username === user.username),
-            profilePicture: user.profilePicture || "default-profile.png",
-          }))
-          .sort((a, b) => new Date(b.datePosted) - new Date(a.datePosted)) // Sort by newest first
-      );
-    }
+    const updatedPosts = getUserPosts(); // Reuse the getUserPosts function
+    setUserPosts(updatedPosts);
   };
 
   if (!userProfile) {
@@ -87,6 +73,7 @@ const Profile = () => {
         currentUser={currentUser} 
         showEditDelete={true}
         onPostUpdate={handlePostUpdate}
+        isUserProfile={true}
       />
     </div>
   );
