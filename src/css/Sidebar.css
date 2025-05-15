@@ -10,6 +10,7 @@
   top: 100px; /* match header height */
   align-self: flex-start; 
   overflow-y: auto; /* Enable vertical scroll */
+  height: calc(100vh - 100px); /* Full viewport height minus the sticky offset */
 }
 
 /* Sidebar profile window */

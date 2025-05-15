@@ -11,8 +11,8 @@ import FollowedPosts from "./FollowedPosts.jsx";
 const Home = () => {
 
   // delete localStorage
-  // localStorage.removeItem("users");
-  // localStorage.removeItem("currentUser");
+  //localStorage.removeItem("users");
+  //localStorage.removeItem("currentUser");
 
   if (!localStorage.getItem("users")) {
     localStorage.setItem("users", JSON.stringify(Users));
