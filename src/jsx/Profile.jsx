@@ -1,41 +1,58 @@
 import React, { useState, useEffect } from "react";
 import '../css/Components.css';
-import Header from '../jsx/Header.jsx'; // Import the Header component
+import Header from '../jsx/Header.jsx';
 import FilterAllPosts from "./FilterAllPosts";
 
 const Profile = () => {
-  // Get the current user from local storage
-  // const currentUser = localStorage.getItem("currentUser");
-  // const loggedInUser = currentUser ? JSON.parse(currentUser) : null;
-
   const [userProfile, setUserProfile] = useState(null);
-
-  // Get the current user from local storage
-  const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+  const [userPosts, setUserPosts] = useState([]);
+  const [existingUsers, setExistingUsers] = useState(
+    JSON.parse(localStorage.getItem("users")) || []
+  );
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-  const user = existingUsers.find(user => user.username === currentUser.username);
-  const userPosts = user
-    ? user.posts.map((post, postIndex) => ({
-        ...post,
-        username: user.username,
-        postIndex,
-        userIndex: existingUsers.findIndex(u => u.username === user.username),
-        profilePicture: user.profilePicture || "default-profile.png",
-      }))
-    : [];
-  // Check if user is logged in
-  // If not, redirect to login page
-useEffect(() => {
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  // Function to get and format user's posts
+  const getUserPosts = () => {
+    const user = existingUsers.find(u => u.username === currentUser?.username);
+    if (!user || !user.posts) return [];
+    
+    return user.posts.map((post, postIndex) => ({
+      ...post,
+      username: user.username,
+      postIndex,
+      userIndex: existingUsers.findIndex(u => u.username === user.username),
+      profilePicture: user.profilePicture || "default-profile.png",
+    }));
+  };
+
+  // Initial load and auth check
+  useEffect(() => {
     if (!currentUser) {
       window.location.href = "/login";
       return;
     }
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const user = users.find(u => u.username === currentUser.username);
+    const user = existingUsers.find(u => u.username === currentUser.username);
     setUserProfile(user);
-  }, []);
+    setUserPosts(getUserPosts());
+  }, [currentUser?.username, existingUsers]);
+
+  // Handle post updates
+  const handlePostUpdate = () => {
+    const updatedUsers = JSON.parse(localStorage.getItem("users")) || [];
+    setExistingUsers(updatedUsers);
+    const user = updatedUsers.find(u => u.username === currentUser?.username);
+    if (user) {
+      setUserPosts(
+        user.posts.map((post, postIndex) => ({
+          ...post,
+          username: user.username,
+          postIndex,
+          userIndex: updatedUsers.findIndex(u => u.username === user.username),
+          profilePicture: user.profilePicture || "default-profile.png",
+        }))
+      );
+    }
+  };
 
   if (!userProfile) {
     return <div>Loading...</div>;
@@ -70,7 +87,13 @@ useEffect(() => {
       <a href="/edit" className="edit-profile-link">Edit Profile</a>
       </div>
 
-      <FilterAllPosts posts={userPosts} currentUser={currentUser} showEditDelete={true} />
+      <FilterAllPosts 
+        posts={userPosts} 
+        currentUser={currentUser} 
+        showEditDelete={true}
+        onPostUpdate={handlePostUpdate}
+        isUserProfile={true}
+      />
 
     </div>
   );
