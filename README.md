@@ -1,4 +1,4 @@
-# React Social plattform
+# React Social platform
 
 A simple social media feed built with React, allowing users to create posts, view followed posts, and manage session data using `localStorage`.
 
