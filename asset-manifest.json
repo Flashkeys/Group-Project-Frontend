@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Group-Project-Frontend/static/css/main.caa2e345.css",
+    "main.js": "/Group-Project-Frontend/static/js/main.f9410920.js",
+    "static/media/message-icon.png": "/Group-Project-Frontend/static/media/message-icon.03a9efd995558f7895c3.png",
+    "static/media/edit-icon.png": "/Group-Project-Frontend/static/media/edit-icon.0f46e2728eb984e21ce8.png",
+    "index.html": "/Group-Project-Frontend/index.html",
+    "main.caa2e345.css.map": "/Group-Project-Frontend/static/css/main.caa2e345.css.map",
+    "main.f9410920.js.map": "/Group-Project-Frontend/static/js/main.f9410920.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.caa2e345.css",
+    "static/js/main.f9410920.js"
+  ]
+}
